@@ -57,4 +57,4 @@ The plugin contract lives in `src/repo_rag/agents/base.py`. See `docs/developmen
 1. Bump `__version__` in `src/repo_rag/__init__.py` following SemVer.
 2. Move `[Unreleased]` content under a new dated section in `CHANGELOG.md`.
 3. Commit on `main`, tag `vX.Y.Z`, push the tag.
-4. The `release.yml` workflow publishes to PyPI via OIDC; `docker.yml` builds and pushes the multi-arch image to `ghcr.io/<YOUR_GITHUB_USERNAME>/repo-rag`.
+4. The `release.yml` workflow publishes to PyPI via OIDC; `docker.yml` builds and pushes the multi-arch image to `ghcr.io/ramanan-bala/repo-rag`.

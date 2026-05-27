@@ -47,7 +47,7 @@ binaries from the vector-store and embedding stack.
 ### Or with Docker
 
 ```bash
-docker pull ghcr.io/<YOUR_GITHUB_USERNAME>/repo-rag:latest
+docker pull ghcr.io/ramanan-bala/repo-rag:latest
 ```
 
 The Docker image runs `rag mcp-server` by default and persists the index under
@@ -56,7 +56,7 @@ The Docker image runs `rag mcp-server` by default and persists the index under
 ```bash
 docker run -i --rm \
   -v "$HOME/.repo-rag:/data/.repo-rag" \
-  ghcr.io/<YOUR_GITHUB_USERNAME>/repo-rag:latest
+  ghcr.io/ramanan-bala/repo-rag:latest
 ```
 
 ## 2. Verify

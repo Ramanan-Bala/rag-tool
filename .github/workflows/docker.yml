@@ -33,7 +33,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/<YOUR_GITHUB_USERNAME>/repo-rag
+          images: ghcr.io/ramanan-bala/repo-rag
           tags: |
             type=ref,event=branch
             type=ref,event=tag

@@ -96,7 +96,7 @@ or use the Docker form, which has no PATH dependency:
       "args": [
         "run", "-i", "--rm",
         "-v", "/Users/you/.repo-rag:/data/.repo-rag",
-        "ghcr.io/<YOUR_GITHUB_USERNAME>/repo-rag:latest"
+        "ghcr.io/ramanan-bala/repo-rag:latest"
       ]
     }
   }

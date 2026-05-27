@@ -2,7 +2,7 @@ FROM python:3.12-slim
 
 LABEL org.opencontainers.image.title="repo-rag"
 LABEL org.opencontainers.image.description="Local RAG indexer and MCP server for AI coding agents"
-LABEL org.opencontainers.image.source="https://github.com/<YOUR_GITHUB_USERNAME>/repo-rag"
+LABEL org.opencontainers.image.source="https://github.com/ramanan-bala/repo-rag"
 LABEL org.opencontainers.image.licenses="MIT"
 
 ENV PYTHONDONTWRITEBYTECODE=1 \

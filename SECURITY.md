@@ -6,7 +6,7 @@ If you find a security issue in repo-rag, please report it privately so it can b
 
 Please do not open a public GitHub issue for security reports.
 
-Email: `<your.email@example.com>`
+Email: `ramanan.bala2003@gmail.com`
 
 We aim to acknowledge reports within 7 days and to ship a fix or mitigation as quickly as possible.
 
@@ -20,7 +20,7 @@ In scope:
 
 - The `repo-rag` Python package and its CLI.
 - The MCP server (`rag mcp-server`).
-- The official Docker image at `ghcr.io/<YOUR_GITHUB_USERNAME>/repo-rag`.
+- The official Docker image at `ghcr.io/ramanan-bala/repo-rag`.
 - The git hook installer.
 
 Out of scope:

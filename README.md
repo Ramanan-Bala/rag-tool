@@ -1,7 +1,7 @@
 # repo-rag
 
 [![PyPI version](https://img.shields.io/pypi/v/repo-rag.svg)](https://pypi.org/project/repo-rag/)
-[![CI](https://github.com/<YOUR_GITHUB_USERNAME>/repo-rag/actions/workflows/ci.yml/badge.svg)](https://github.com/<YOUR_GITHUB_USERNAME>/repo-rag/actions/workflows/ci.yml)
+[![CI](https://github.com/ramanan-bala/repo-rag/actions/workflows/ci.yml/badge.svg)](https://github.com/ramanan-bala/repo-rag/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/pypi/pyversions/repo-rag.svg)](https://pypi.org/project/repo-rag/)
 
@@ -129,7 +129,7 @@ Nothing is written inside your repo apart from optional `AGENTS.md`,
 ## Docker
 
 ```bash
-docker pull ghcr.io/<YOUR_GITHUB_USERNAME>/repo-rag:latest
+docker pull ghcr.io/ramanan-bala/repo-rag:latest
 ```
 
 ```json
@@ -140,7 +140,7 @@ docker pull ghcr.io/<YOUR_GITHUB_USERNAME>/repo-rag:latest
       "args": [
         "run", "-i", "--rm",
         "-v", "~/.repo-rag:/data/.repo-rag",
-        "ghcr.io/<YOUR_GITHUB_USERNAME>/repo-rag:latest"
+        "ghcr.io/ramanan-bala/repo-rag:latest"
       ]
     }
   }

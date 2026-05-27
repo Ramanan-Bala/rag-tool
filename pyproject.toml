@@ -9,7 +9,7 @@ description = "Local RAG indexer and MCP server for AI coding agents (Claude, GP
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
-authors = [{ name = "<YOUR_NAME>", email = "noreply@example.com" }]
+authors = [{ name = "Ramanan Balamurugan", email = "ramanan.bala2003@gmail.com" }]
 keywords = [
     "rag",
     "mcp",
@@ -79,11 +79,11 @@ all = [
 rag = "repo_rag.cli:app"
 
 [project.urls]
-Homepage = "https://github.com/<YOUR_GITHUB_USERNAME>/repo-rag"
-Repository = "https://github.com/<YOUR_GITHUB_USERNAME>/repo-rag"
-Issues = "https://github.com/<YOUR_GITHUB_USERNAME>/repo-rag/issues"
-Changelog = "https://github.com/<YOUR_GITHUB_USERNAME>/repo-rag/blob/main/CHANGELOG.md"
-Documentation = "https://github.com/<YOUR_GITHUB_USERNAME>/repo-rag/tree/main/docs"
+Homepage = "https://github.com/ramanan-bala/repo-rag"
+Repository = "https://github.com/ramanan-bala/repo-rag"
+Issues = "https://github.com/ramanan-bala/repo-rag/issues"
+Changelog = "https://github.com/ramanan-bala/repo-rag/blob/main/CHANGELOG.md"
+Documentation = "https://github.com/ramanan-bala/repo-rag/tree/main/docs"
 
 [tool.setuptools]
 package-dir = { "" = "src" }

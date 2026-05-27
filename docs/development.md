@@ -36,7 +36,7 @@ scripts/
 ## Setup
 
 ```bash
-git clone https://github.com/<YOUR_GITHUB_USERNAME>/repo-rag.git
+git clone https://github.com/ramanan-bala/repo-rag.git
 cd repo-rag
 python -m venv .venv
 
@@ -108,7 +108,7 @@ CI runs the same commands on Ubuntu, macOS, and Windows for Python 3.11 and 3.12
 5. `release.yml` builds the sdist + wheel and publishes to PyPI via the
    OIDC trusted publisher you configured on PyPI's web UI.
 6. `docker.yml` builds the multi-arch image (`linux/amd64`, `linux/arm64`)
-   and pushes to `ghcr.io/<YOUR_GITHUB_USERNAME>/repo-rag:<version>` and
+   and pushes to `ghcr.io/ramanan-bala/repo-rag:<version>` and
    `:latest`.
 
 ## Code style

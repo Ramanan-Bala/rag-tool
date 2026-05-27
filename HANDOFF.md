@@ -26,7 +26,7 @@ Working directory: `C:\Raptor\rag tool` (not yet a git repo).
 
 ### Foundation files already created in repo root
 
-- `LICENSE` - MIT, contains `<YEAR>` and `<YOUR_NAME>` placeholders.
+- `LICENSE` - MIT, contains `2026` and `Ramanan Balamurugan` placeholders.
 - `.gitignore` - Python, virtualenv, test caches, IDE, repo-rag local data, OS junk.
 - `.dockerignore`.
 - `Dockerfile` - python:3.12-slim base, installs the package, default CMD `rag mcp-server`.
@@ -36,17 +36,17 @@ Working directory: `C:\Raptor\rag tool` (not yet a git repo).
 
 ### Foundation files NOT YET created
 
-- `CODE_OF_CONDUCT.md` - use Contributor Covenant 2.1, replace contact email with `<your.email@example.com>` placeholder.
+- `CODE_OF_CONDUCT.md` - use Contributor Covenant 2.1, replace contact email with `ramanan.bala2003@gmail.com` placeholder.
 - `README.md` - present from old session but content describes the Factory-only version. Needs full rewrite per Phase 3c. The old file at `C:\Raptor\rag tool\README.md` is overwriteable.
 
 ## Identity placeholders used throughout
 
 The user will swap these via `scripts/replace-placeholders.ps1` before pushing.
 
-- `<YOUR_GITHUB_USERNAME>` - GitHub handle (used in URLs, badges, ghcr.io path).
-- `<YOUR_NAME>` - LICENSE copyright + pyproject author.
-- `<your.email@example.com>` - pyproject email + SECURITY contact + CoC enforcement contact.
-- `<YEAR>` - copyright year (use 2026 if unfilled).
+- `ramanan-bala` - GitHub handle (used in URLs, badges, ghcr.io path).
+- `Ramanan Balamurugan` - LICENSE copyright + pyproject author.
+- `ramanan.bala2003@gmail.com` - pyproject email + SECURITY contact + CoC enforcement contact.
+- `2026` - copyright year (use 2026 if unfilled).
 
 Find/replace tokens are written verbatim, including angle brackets, so a single replace pass swaps them all.
 
@@ -63,7 +63,7 @@ The full plan is in the approved spec. High-level phases that still need to run:
 5. **Phase 1e**: CI workflows under `.github/workflows/`:
    - `ci.yml` - Ubuntu/macOS/Windows times Python 3.11/3.12, ruff + pytest.
    - `release.yml` - on tag `v*.*.*`, build wheel + sdist, publish to PyPI via OIDC trusted publisher.
-   - `docker.yml` - on tag and push to main, multi-arch image to `ghcr.io/<YOUR_GITHUB_USERNAME>/repo-rag`.
+   - `docker.yml` - on tag and push to main, multi-arch image to `ghcr.io/ramanan-bala/repo-rag`.
    - Issue + PR templates under `.github/ISSUE_TEMPLATE/` and `.github/PULL_REQUEST_TEMPLATE.md`.
 6. **Phase 1f**: `scripts/replace-placeholders.ps1` and `scripts/replace-placeholders.sh`. PowerShell version takes `-GitHubUsername`, `-FullName`, `-Email`, `-Year` parameters and find/replaces across the tree.
 
