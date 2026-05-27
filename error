@@ -1,0 +1,1193 @@
+Last login: Wed May 27 19:12:17 on ttys000
+
+~
+❯ pipx install repo-rag
+Fatal error from pip prevented installation. Full pip output in file:
+    /Users/ramanan/.local/pipx/logs/cmd_2026-05-27_20.09.44_pip_errors.log
+
+Some possibly relevant errors from pip install:
+    ERROR: Ignored the following versions that require a different python version: 0.1.0 Requires-Python >=3.11
+    ERROR: Could not find a version that satisfies the requirement repo-rag (from versions: none)
+    ERROR: No matching distribution found for repo-rag
+
+Error installing repo-rag.
+
+~
+❯ pipx install repo-rag
+Fatal error from pip prevented installation. Full pip output in file:
+    /Users/ramanan/.local/pipx/logs/cmd_2026-05-27_20.10.17_pip_errors.log
+
+Some possibly relevant errors from pip install:
+    ERROR: Ignored the following versions that require a different python version: 0.1.0 Requires-Python >=3.11
+    ERROR: Could not find a version that satisfies the requirement repo-rag (from versions: none)
+    ERROR: No matching distribution found for repo-rag
+
+Error installing repo-rag.
+
+~
+❯ pip3 install repo-rag
+WARNING: Cache entry deserialization failed, entry ignored
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting repo-rag
+  Downloading repo_rag-0.1.0-py3-none-any.whl.metadata (9.5 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting typer<1,>=0.12 (from repo-rag)
+  Using cached typer-0.26.2-py3-none-any.whl.metadata (16 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting pydantic<3,>=2.5 (from repo-rag)
+  Using cached pydantic-2.13.4-py3-none-any.whl.metadata (109 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting pydantic-settings<3,>=2.0 (from repo-rag)
+  Using cached pydantic_settings-2.14.1-py3-none-any.whl.metadata (3.4 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting tomli-w<2,>=1.0 (from repo-rag)
+  Using cached tomli_w-1.2.0-py3-none-any.whl.metadata (5.7 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting pathspec<1,>=0.12 (from repo-rag)
+  Using cached pathspec-0.12.1-py3-none-any.whl.metadata (21 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting rich<14,>=13 (from repo-rag)
+  Using cached rich-13.9.4-py3-none-any.whl.metadata (18 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting httpx<1,>=0.27 (from repo-rag)
+  Using cached httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting numpy<3,>=1.26 (from repo-rag)
+  Using cached numpy-2.4.6-cp314-cp314-macosx_14_0_arm64.whl.metadata (6.6 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting lancedb<1,>=0.10 (from repo-rag)
+  Using cached lancedb-0.30.2-cp39-abi3-macosx_11_0_arm64.whl.metadata (5.0 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting pyarrow<22,>=15 (from repo-rag)
+  Using cached pyarrow-21.0.0.tar.gz (1.1 MB)
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+  Preparing metadata (pyproject.toml) ... done
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting fastembed<1,>=0.4 (from repo-rag)
+  Using cached fastembed-0.8.0-py3-none-any.whl.metadata (10 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting mcp<2,>=1.0 (from repo-rag)
+  Using cached mcp-1.27.1-py3-none-any.whl.metadata (8.2 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting huggingface-hub<2.0,>=0.20 (from fastembed<1,>=0.4->repo-rag)
+  Using cached huggingface_hub-1.16.4-py3-none-any.whl.metadata (14 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting loguru<0.8.0,>=0.7.2 (from fastembed<1,>=0.4->repo-rag)
+  Using cached loguru-0.7.3-py3-none-any.whl.metadata (22 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting mmh3<6.0.0,>=4.1.0 (from fastembed<1,>=0.4->repo-rag)
+  Using cached mmh3-5.2.1-cp314-cp314-macosx_11_0_arm64.whl.metadata (14 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting onnxruntime>=1.24.2 (from fastembed<1,>=0.4->repo-rag)
+  Using cached onnxruntime-1.26.0-cp314-cp314-macosx_14_0_arm64.whl.metadata (5.3 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting pillow<13.0,>=12.0.0 (from fastembed<1,>=0.4->repo-rag)
+  Using cached pillow-12.2.0-cp314-cp314-macosx_11_0_arm64.whl.metadata (8.8 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting py-rust-stemmers<0.2.0,>=0.1.0 (from fastembed<1,>=0.4->repo-rag)
+  Using cached py_rust_stemmers-0.1.8-cp314-cp314-macosx_11_0_arm64.whl.metadata (3.5 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting requests<3.0,>=2.31 (from fastembed<1,>=0.4->repo-rag)
+  Using cached requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting tokenizers<1.0,>=0.15 (from fastembed<1,>=0.4->repo-rag)
+  Using cached tokenizers-0.23.1-cp310-abi3-macosx_11_0_arm64.whl.metadata (9.8 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting tqdm<5.0,>=4.66 (from fastembed<1,>=0.4->repo-rag)
+  Using cached tqdm-4.67.3-py3-none-any.whl.metadata (57 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting anyio (from httpx<1,>=0.27->repo-rag)
+  Using cached anyio-4.13.0-py3-none-any.whl.metadata (4.5 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting certifi (from httpx<1,>=0.27->repo-rag)
+  Using cached certifi-2026.5.20-py3-none-any.whl.metadata (2.5 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting httpcore==1.* (from httpx<1,>=0.27->repo-rag)
+  Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting idna (from httpx<1,>=0.27->repo-rag)
+  Using cached idna-3.16-py3-none-any.whl.metadata (6.4 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting h11>=0.16 (from httpcore==1.*->httpx<1,>=0.27->repo-rag)
+  Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting click>=8.4.0 (from huggingface-hub<2.0,>=0.20->fastembed<1,>=0.4->repo-rag)
+  Using cached click-8.4.1-py3-none-any.whl.metadata (2.6 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting filelock>=3.10.0 (from huggingface-hub<2.0,>=0.20->fastembed<1,>=0.4->repo-rag)
+  Using cached filelock-3.29.0-py3-none-any.whl.metadata (2.0 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting fsspec>=2023.5.0 (from huggingface-hub<2.0,>=0.20->fastembed<1,>=0.4->repo-rag)
+  Using cached fsspec-2026.4.0-py3-none-any.whl.metadata (10 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting hf-xet<2.0.0,>=1.4.3 (from huggingface-hub<2.0,>=0.20->fastembed<1,>=0.4->repo-rag)
+  Using cached hf_xet-1.5.0-cp37-abi3-macosx_11_0_arm64.whl.metadata (4.9 kB)
+Collecting packaging>=20.9 (from huggingface-hub<2.0,>=0.20->fastembed<1,>=0.4->repo-rag)
+  Using cached packaging-26.2-py3-none-any.whl.metadata (3.5 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting pyyaml>=5.1 (from huggingface-hub<2.0,>=0.20->fastembed<1,>=0.4->repo-rag)
+  Using cached pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl.metadata (2.4 kB)
+Collecting typer<1,>=0.12 (from repo-rag)
+  Using cached typer-0.25.1-py3-none-any.whl.metadata (15 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting typing-extensions>=4.1.0 (from huggingface-hub<2.0,>=0.20->fastembed<1,>=0.4->repo-rag)
+  Using cached typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting deprecation>=2.1.0 (from lancedb<1,>=0.10->repo-rag)
+  Using cached deprecation-2.1.0-py2.py3-none-any.whl.metadata (4.6 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting lance-namespace>=0.3.2 (from lancedb<1,>=0.10->repo-rag)
+  Using cached lance_namespace-0.7.7-py3-none-any.whl.metadata (1.6 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting httpx-sse>=0.4 (from mcp<2,>=1.0->repo-rag)
+  Using cached httpx_sse-0.4.3-py3-none-any.whl.metadata (9.7 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting jsonschema>=4.20.0 (from mcp<2,>=1.0->repo-rag)
+  Using cached jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting pyjwt>=2.10.1 (from pyjwt[crypto]>=2.10.1->mcp<2,>=1.0->repo-rag)
+  Using cached pyjwt-2.13.0-py3-none-any.whl.metadata (3.4 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting python-multipart>=0.0.9 (from mcp<2,>=1.0->repo-rag)
+  Using cached python_multipart-0.0.29-py3-none-any.whl.metadata (2.1 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting sse-starlette>=1.6.1 (from mcp<2,>=1.0->repo-rag)
+  Using cached sse_starlette-3.4.4-py3-none-any.whl.metadata (15 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting starlette>=0.27 (from mcp<2,>=1.0->repo-rag)
+  Using cached starlette-1.1.0-py3-none-any.whl.metadata (6.3 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting typing-inspection>=0.4.1 (from mcp<2,>=1.0->repo-rag)
+  Using cached typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting uvicorn>=0.31.1 (from mcp<2,>=1.0->repo-rag)
+  Using cached uvicorn-0.48.0-py3-none-any.whl.metadata (6.7 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting annotated-types>=0.6.0 (from pydantic<3,>=2.5->repo-rag)
+  Using cached annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting pydantic-core==2.46.4 (from pydantic<3,>=2.5->repo-rag)
+  Using cached pydantic_core-2.46.4-cp314-cp314-macosx_11_0_arm64.whl.metadata (6.6 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting python-dotenv>=0.21.0 (from pydantic-settings<3,>=2.0->repo-rag)
+  Using cached python_dotenv-1.2.2-py3-none-any.whl.metadata (27 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting charset_normalizer<4,>=2 (from requests<3.0,>=2.31->fastembed<1,>=0.4->repo-rag)
+  Using cached charset_normalizer-3.4.7-cp314-cp314-macosx_10_15_universal2.whl.metadata (40 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting urllib3<3,>=1.26 (from requests<3.0,>=2.31->fastembed<1,>=0.4->repo-rag)
+  Using cached urllib3-2.7.0-py3-none-any.whl.metadata (6.9 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting markdown-it-py>=2.2.0 (from rich<14,>=13->repo-rag)
+  Using cached markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting pygments<3.0.0,>=2.13.0 (from rich<14,>=13->repo-rag)
+  Using cached pygments-2.20.0-py3-none-any.whl.metadata (2.5 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting shellingham>=1.3.0 (from typer<1,>=0.12->repo-rag)
+  Using cached shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting annotated-doc>=0.0.2 (from typer<1,>=0.12->repo-rag)
+  Using cached annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting attrs>=22.2.0 (from jsonschema>=4.20.0->mcp<2,>=1.0->repo-rag)
+  Using cached attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>=4.20.0->mcp<2,>=1.0->repo-rag)
+  Using cached jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting referencing>=0.28.4 (from jsonschema>=4.20.0->mcp<2,>=1.0->repo-rag)
+  Using cached referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting rpds-py>=0.25.0 (from jsonschema>=4.20.0->mcp<2,>=1.0->repo-rag)
+  Using cached rpds_py-0.30.0-cp314-cp314-macosx_11_0_arm64.whl.metadata (4.1 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting lance-namespace-urllib3-client==0.7.7 (from lance-namespace>=0.3.2->lancedb<1,>=0.10->repo-rag)
+  Using cached lance_namespace_urllib3_client-0.7.7-py3-none-any.whl.metadata (29 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting python-dateutil>=2.8.2 (from lance-namespace-urllib3-client==0.7.7->lance-namespace>=0.3.2->lancedb<1,>=0.10->repo-rag)
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich<14,>=13->repo-rag)
+  Using cached mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting flatbuffers (from onnxruntime>=1.24.2->fastembed<1,>=0.4->repo-rag)
+  Using cached flatbuffers-25.12.19-py2.py3-none-any.whl.metadata (1.0 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting protobuf (from onnxruntime>=1.24.2->fastembed<1,>=0.4->repo-rag)
+  Using cached protobuf-7.35.0-cp310-abi3-macosx_10_9_universal2.whl.metadata (595 bytes)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting cryptography>=3.4.0 (from pyjwt[crypto]>=2.10.1->mcp<2,>=1.0->repo-rag)
+  Using cached cryptography-48.0.0-cp311-abi3-macosx_10_9_universal2.whl.metadata (4.3 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting cffi>=2.0.0 (from cryptography>=3.4.0->pyjwt[crypto]>=2.10.1->mcp<2,>=1.0->repo-rag)
+  Using cached cffi-2.0.0-cp314-cp314-macosx_11_0_arm64.whl.metadata (2.6 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting pycparser (from cffi>=2.0.0->cryptography>=3.4.0->pyjwt[crypto]>=2.10.1->mcp<2,>=1.0->repo-rag)
+  Using cached pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting six>=1.5 (from python-dateutil>=2.8.2->lance-namespace-urllib3-client==0.7.7->lance-namespace>=0.3.2->lancedb<1,>=0.10->repo-rag)
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Downloading repo_rag-0.1.0-py3-none-any.whl (58 kB)
+Using cached fastembed-0.8.0-py3-none-any.whl (116 kB)
+Using cached httpx-0.28.1-py3-none-any.whl (73 kB)
+Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+Using cached huggingface_hub-1.16.4-py3-none-any.whl (668 kB)
+Using cached hf_xet-1.5.0-cp37-abi3-macosx_11_0_arm64.whl (3.8 MB)
+Using cached lancedb-0.30.2-cp39-abi3-macosx_11_0_arm64.whl (41.7 MB)
+Using cached loguru-0.7.3-py3-none-any.whl (61 kB)
+Using cached mcp-1.27.1-py3-none-any.whl (216 kB)
+Using cached mmh3-5.2.1-cp314-cp314-macosx_11_0_arm64.whl (40 kB)
+Using cached numpy-2.4.6-cp314-cp314-macosx_14_0_arm64.whl (5.2 MB)
+Using cached pathspec-0.12.1-py3-none-any.whl (31 kB)
+Using cached pillow-12.2.0-cp314-cp314-macosx_11_0_arm64.whl (4.7 MB)
+Using cached py_rust_stemmers-0.1.8-cp314-cp314-macosx_11_0_arm64.whl (275 kB)
+Using cached pydantic-2.13.4-py3-none-any.whl (472 kB)
+Using cached pydantic_core-2.46.4-cp314-cp314-macosx_11_0_arm64.whl (2.0 MB)
+Using cached pydantic_settings-2.14.1-py3-none-any.whl (60 kB)
+Using cached requests-2.34.2-py3-none-any.whl (73 kB)
+Using cached charset_normalizer-3.4.7-cp314-cp314-macosx_10_15_universal2.whl (309 kB)
+Using cached idna-3.16-py3-none-any.whl (74 kB)
+Using cached rich-13.9.4-py3-none-any.whl (242 kB)
+Using cached pygments-2.20.0-py3-none-any.whl (1.2 MB)
+Using cached tokenizers-0.23.1-cp310-abi3-macosx_11_0_arm64.whl (3.1 MB)
+Using cached tomli_w-1.2.0-py3-none-any.whl (6.7 kB)
+Using cached tqdm-4.67.3-py3-none-any.whl (78 kB)
+Using cached typer-0.25.1-py3-none-any.whl (58 kB)
+Using cached urllib3-2.7.0-py3-none-any.whl (131 kB)
+Using cached annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+Using cached annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Using cached anyio-4.13.0-py3-none-any.whl (114 kB)
+Using cached certifi-2026.5.20-py3-none-any.whl (134 kB)
+Using cached click-8.4.1-py3-none-any.whl (116 kB)
+Using cached deprecation-2.1.0-py2.py3-none-any.whl (11 kB)
+Using cached filelock-3.29.0-py3-none-any.whl (39 kB)
+Using cached fsspec-2026.4.0-py3-none-any.whl (203 kB)
+Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+Using cached httpx_sse-0.4.3-py3-none-any.whl (9.0 kB)
+Using cached jsonschema-4.26.0-py3-none-any.whl (90 kB)
+Using cached attrs-26.1.0-py3-none-any.whl (67 kB)
+Using cached jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+Using cached lance_namespace-0.7.7-py3-none-any.whl (12 kB)
+Using cached lance_namespace_urllib3_client-0.7.7-py3-none-any.whl (334 kB)
+Using cached markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+Using cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Using cached onnxruntime-1.26.0-cp314-cp314-macosx_14_0_arm64.whl (18.0 MB)
+Using cached packaging-26.2-py3-none-any.whl (100 kB)
+Using cached pyjwt-2.13.0-py3-none-any.whl (31 kB)
+Using cached cryptography-48.0.0-cp311-abi3-macosx_10_9_universal2.whl (8.0 MB)
+Using cached cffi-2.0.0-cp314-cp314-macosx_11_0_arm64.whl (181 kB)
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Using cached python_dotenv-1.2.2-py3-none-any.whl (22 kB)
+Using cached python_multipart-0.0.29-py3-none-any.whl (29 kB)
+Using cached pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl (173 kB)
+Using cached referencing-0.37.0-py3-none-any.whl (26 kB)
+Using cached rpds_py-0.30.0-cp314-cp314-macosx_11_0_arm64.whl (353 kB)
+Using cached shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Using cached sse_starlette-3.4.4-py3-none-any.whl (16 kB)
+Using cached starlette-1.1.0-py3-none-any.whl (72 kB)
+Using cached typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Using cached typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+Using cached uvicorn-0.48.0-py3-none-any.whl (71 kB)
+Using cached flatbuffers-25.12.19-py2.py3-none-any.whl (26 kB)
+Using cached protobuf-7.35.0-cp310-abi3-macosx_10_9_universal2.whl (433 kB)
+Using cached pycparser-3.0-py3-none-any.whl (48 kB)
+Building wheels for collected packages: pyarrow
+  Building wheel for pyarrow (pyproject.toml) ... error
+  error: subprocess-exited-with-error
+
+  × Building wheel for pyarrow (pyproject.toml) did not run successfully.
+  │ exit code: 1
+  ╰─> [878 lines of output]
+      /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-build-env-g7r0f7gb/overlay/lib/python3.14/site-packages/setuptools/config/_apply_pyprojecttoml.py:82: SetuptoolsDeprecationWarning: `project.license` as a TOML table is deprecated
+      !!
+
+              ********************************************************************************
+              Please use a simple string containing a SPDX expression for `project.license`. You can also use `project.license-files`. (Both options available on setuptools>=77.0.0).
+
+              By 2027-Feb-18, you need to update your project and remove deprecated calls
+              or your builds will no longer be supported.
+
+              See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+              ********************************************************************************
+
+      !!
+        corresp(dist, value, root_dir)
+      /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-build-env-g7r0f7gb/overlay/lib/python3.14/site-packages/setuptools/config/_apply_pyprojecttoml.py:61: SetuptoolsDeprecationWarning: License classifiers are deprecated.
+      !!
+
+              ********************************************************************************
+              Please consider removing the following classifiers in favor of a SPDX license expression:
+
+              License :: OSI Approved :: Apache Software License
+
+              See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+              ********************************************************************************
+
+      !!
+        dist._finalize_license_expression()
+      /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-build-env-g7r0f7gb/overlay/lib/python3.14/site-packages/setuptools/dist.py:483: SetuptoolsDeprecationWarning: Pattern '../LICENSE.txt' cannot contain '..'
+      !!
+
+              ********************************************************************************
+              Please ensure the files specified are contained by the root
+              of the Python package (normally marked by `pyproject.toml`).
+
+              By 2027-Feb-18, you need to update your project and remove deprecated calls
+              or your builds will no longer be supported.
+
+              See https://packaging.python.org/en/latest/specifications/glob-patterns/ for details.
+              ********************************************************************************
+
+      !!
+        for path in sorted(cls._find_pattern(pattern, enforce_match))
+      /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-build-env-g7r0f7gb/overlay/lib/python3.14/site-packages/setuptools/dist.py:483: SetuptoolsDeprecationWarning: Cannot find any files for the given pattern.
+      !!
+
+              ********************************************************************************
+              Pattern '../LICENSE.txt' did not match any files.
+
+              By 2027-Feb-18, you need to update your project and remove deprecated calls
+              or your builds will no longer be supported.
+              ********************************************************************************
+
+      !!
+        for path in sorted(cls._find_pattern(pattern, enforce_match))
+      /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-build-env-g7r0f7gb/overlay/lib/python3.14/site-packages/setuptools/dist.py:483: SetuptoolsDeprecationWarning: Pattern '../NOTICE.txt' cannot contain '..'
+      !!
+
+              ********************************************************************************
+              Please ensure the files specified are contained by the root
+              of the Python package (normally marked by `pyproject.toml`).
+
+              By 2027-Feb-18, you need to update your project and remove deprecated calls
+              or your builds will no longer be supported.
+
+              See https://packaging.python.org/en/latest/specifications/glob-patterns/ for details.
+              ********************************************************************************
+
+      !!
+        for path in sorted(cls._find_pattern(pattern, enforce_match))
+      /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-build-env-g7r0f7gb/overlay/lib/python3.14/site-packages/setuptools/dist.py:483: SetuptoolsDeprecationWarning: Cannot find any files for the given pattern.
+      !!
+
+              ********************************************************************************
+              Pattern '../NOTICE.txt' did not match any files.
+
+              By 2027-Feb-18, you need to update your project and remove deprecated calls
+              or your builds will no longer be supported.
+              ********************************************************************************
+
+      !!
+        for path in sorted(cls._find_pattern(pattern, enforce_match))
+      /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-build-env-g7r0f7gb/overlay/lib/python3.14/site-packages/setuptools/dist.py:765: SetuptoolsDeprecationWarning: License classifiers are deprecated.
+      !!
+
+              ********************************************************************************
+              Please consider removing the following classifiers in favor of a SPDX license expression:
+
+              License :: OSI Approved :: Apache Software License
+
+              See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+              ********************************************************************************
+
+      !!
+        self._finalize_license_expression()
+      running bdist_wheel
+      running build
+      running build_py
+      creating build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/orc.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/conftest.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_generated_version.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/benchmark.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_compute_docstrings.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/ipc.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/util.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/flight.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/cffi.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/substrait.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/__init__.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/types.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/dataset.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/cuda.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/feather.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/pandas_compat.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/fs.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/acero.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/csv.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/jvm.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/json.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/compute.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      running egg_info
+      writing pyarrow.egg-info/PKG-INFO
+      writing dependency_links to pyarrow.egg-info/dependency_links.txt
+      writing requirements to pyarrow.egg-info/requires.txt
+      writing top-level names to pyarrow.egg-info/top_level.txt
+      /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-build-env-g7r0f7gb/overlay/lib/python3.14/site-packages/vcs_versioning/overrides.py:609: UserWarning: No GlobalOverrides context is active. Auto-creating one with SETUPTOOLS_SCM prefix for backwards compatibility. Consider using 'with GlobalOverrides.from_env("YOUR_TOOL"):' explicitly.
+        return get_active_overrides().subprocess_timeout
+      listing git files failed - pretending there aren't any
+      reading manifest file 'pyarrow.egg-info/SOURCES.txt'
+      reading manifest template 'MANIFEST.in'
+      warning: no files found matching '../LICENSE.txt'
+      warning: no files found matching '../NOTICE.txt'
+      warning: no previously-included files matching '*.so' found anywhere in distribution
+      warning: no previously-included files matching '*.pyc' found anywhere in distribution
+      warning: no previously-included files matching '*~' found anywhere in distribution
+      warning: no previously-included files matching '#*' found anywhere in distribution
+      warning: no previously-included files matching '.git*' found anywhere in distribution
+      warning: no previously-included files matching '.DS_Store' found anywhere in distribution
+      no previously-included directories found matching '.asv'
+      writing manifest file 'pyarrow.egg-info/SOURCES.txt'
+      /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-build-env-g7r0f7gb/overlay/lib/python3.14/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'pyarrow.includes' is absent from the `packages` configuration.
+      !!
+
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'pyarrow.includes' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'pyarrow.includes' is explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'pyarrow.includes' to be distributed and are
+              already explicitly excluding 'pyarrow.includes' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+
+              You can read more about "package data files" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-build-env-g7r0f7gb/overlay/lib/python3.14/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'pyarrow.interchange' is absent from the `packages` configuration.
+      !!
+
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'pyarrow.interchange' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'pyarrow.interchange' is explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'pyarrow.interchange' to be distributed and are
+              already explicitly excluding 'pyarrow.interchange' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+
+              You can read more about "package data files" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-build-env-g7r0f7gb/overlay/lib/python3.14/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'pyarrow.parquet' is absent from the `packages` configuration.
+      !!
+
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'pyarrow.parquet' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'pyarrow.parquet' is explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'pyarrow.parquet' to be distributed and are
+              already explicitly excluding 'pyarrow.parquet' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+
+              You can read more about "package data files" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-build-env-g7r0f7gb/overlay/lib/python3.14/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'pyarrow.src.arrow.python' is absent from the `packages` configuration.
+      !!
+
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'pyarrow.src.arrow.python' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'pyarrow.src.arrow.python' is explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'pyarrow.src.arrow.python' to be distributed and are
+              already explicitly excluding 'pyarrow.src.arrow.python' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+
+              You can read more about "package data files" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-build-env-g7r0f7gb/overlay/lib/python3.14/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'pyarrow.src.arrow.python.vendored' is absent from the `packages` configuration.
+      !!
+
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'pyarrow.src.arrow.python.vendored' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'pyarrow.src.arrow.python.vendored' is explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'pyarrow.src.arrow.python.vendored' to be distributed and are
+              already explicitly excluding 'pyarrow.src.arrow.python.vendored' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+
+              You can read more about "package data files" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-build-env-g7r0f7gb/overlay/lib/python3.14/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'pyarrow.tests' is absent from the `packages` configuration.
+      !!
+
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'pyarrow.tests' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'pyarrow.tests' is explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'pyarrow.tests' to be distributed and are
+              already explicitly excluding 'pyarrow.tests' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+
+              You can read more about "package data files" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-build-env-g7r0f7gb/overlay/lib/python3.14/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'pyarrow.tests.data.feather' is absent from the `packages` configuration.
+      !!
+
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'pyarrow.tests.data.feather' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'pyarrow.tests.data.feather' is explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'pyarrow.tests.data.feather' to be distributed and are
+              already explicitly excluding 'pyarrow.tests.data.feather' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+
+              You can read more about "package data files" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-build-env-g7r0f7gb/overlay/lib/python3.14/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'pyarrow.tests.data.orc' is absent from the `packages` configuration.
+      !!
+
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'pyarrow.tests.data.orc' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'pyarrow.tests.data.orc' is explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'pyarrow.tests.data.orc' to be distributed and are
+              already explicitly excluding 'pyarrow.tests.data.orc' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+
+              You can read more about "package data files" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-build-env-g7r0f7gb/overlay/lib/python3.14/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'pyarrow.tests.data.parquet' is absent from the `packages` configuration.
+      !!
+
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'pyarrow.tests.data.parquet' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'pyarrow.tests.data.parquet' is explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'pyarrow.tests.data.parquet' to be distributed and are
+              already explicitly excluding 'pyarrow.tests.data.parquet' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+
+              You can read more about "package data files" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-build-env-g7r0f7gb/overlay/lib/python3.14/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'pyarrow.tests.interchange' is absent from the `packages` configuration.
+      !!
+
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'pyarrow.tests.interchange' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'pyarrow.tests.interchange' is explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'pyarrow.tests.interchange' to be distributed and are
+              already explicitly excluding 'pyarrow.tests.interchange' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+
+              You can read more about "package data files" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-build-env-g7r0f7gb/overlay/lib/python3.14/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'pyarrow.tests.parquet' is absent from the `packages` configuration.
+      !!
+
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'pyarrow.tests.parquet' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'pyarrow.tests.parquet' is explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'pyarrow.tests.parquet' to be distributed and are
+              already explicitly excluding 'pyarrow.tests.parquet' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+
+              You can read more about "package data files" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-build-env-g7r0f7gb/overlay/lib/python3.14/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'pyarrow.vendored' is absent from the `packages` configuration.
+      !!
+
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'pyarrow.vendored' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'pyarrow.vendored' is explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'pyarrow.vendored' to be distributed and are
+              already explicitly excluding 'pyarrow.vendored' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+
+              You can read more about "package data files" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+
+      !!
+        check.warn(importable)
+      copying pyarrow/__init__.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_acero.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_acero.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_azurefs.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_compute.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_compute.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_csv.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_csv.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_cuda.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_cuda.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_dataset.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_dataset.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_dataset_orc.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_dataset_parquet.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_dataset_parquet.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_dataset_parquet_encryption.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_dlpack.pxi -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_feather.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_flight.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_fs.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_fs.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_gcsfs.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_hdfs.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_json.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_json.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_orc.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_orc.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_parquet.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_parquet.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_parquet_encryption.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_parquet_encryption.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_pyarrow_cpp_tests.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_pyarrow_cpp_tests.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_s3fs.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/_substrait.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/array.pxi -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/benchmark.pxi -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/builder.pxi -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/compat.pxi -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/config.pxi -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/device.pxi -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/error.pxi -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/gandiva.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/io.pxi -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/ipc.pxi -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/lib.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/lib.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/memory.pxi -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/pandas-shim.pxi -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/public-api.pxi -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/scalar.pxi -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/table.pxi -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/tensor.pxi -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      copying pyarrow/types.pxi -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow
+      creating build/lib.macosx-10.15-universal2-cpython-314/pyarrow/includes
+      copying pyarrow/includes/__init__.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/includes
+      copying pyarrow/includes/common.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/includes
+      copying pyarrow/includes/libarrow.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/includes
+      copying pyarrow/includes/libarrow_acero.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/includes
+      copying pyarrow/includes/libarrow_cuda.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/includes
+      copying pyarrow/includes/libarrow_dataset.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/includes
+      copying pyarrow/includes/libarrow_dataset_parquet.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/includes
+      copying pyarrow/includes/libarrow_feather.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/includes
+      copying pyarrow/includes/libarrow_flight.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/includes
+      copying pyarrow/includes/libarrow_fs.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/includes
+      copying pyarrow/includes/libarrow_python.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/includes
+      copying pyarrow/includes/libarrow_substrait.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/includes
+      copying pyarrow/includes/libgandiva.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/includes
+      copying pyarrow/includes/libparquet.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/includes
+      copying pyarrow/includes/libparquet_encryption.pxd -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/includes
+      creating build/lib.macosx-10.15-universal2-cpython-314/pyarrow/interchange
+      copying pyarrow/interchange/__init__.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/interchange
+      copying pyarrow/interchange/buffer.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/interchange
+      copying pyarrow/interchange/column.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/interchange
+      copying pyarrow/interchange/dataframe.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/interchange
+      copying pyarrow/interchange/from_dataframe.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/interchange
+      creating build/lib.macosx-10.15-universal2-cpython-314/pyarrow/parquet
+      copying pyarrow/parquet/__init__.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/parquet
+      copying pyarrow/parquet/core.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/parquet
+      copying pyarrow/parquet/encryption.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/parquet
+      creating build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/CMakeLists.txt -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/api.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/arrow_to_pandas.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/arrow_to_pandas.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/arrow_to_python_internal.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/async.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/benchmark.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/benchmark.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/common.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/common.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/csv.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/csv.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/datetime.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/datetime.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/decimal.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/decimal.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/extension_type.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/extension_type.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/filesystem.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/filesystem.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/flight.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/flight.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/gdb.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/gdb.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/helpers.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/helpers.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/inference.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/inference.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/io.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/io.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/ipc.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/ipc.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/iterators.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/numpy_convert.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/numpy_convert.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/numpy_init.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/numpy_init.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/numpy_internal.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/numpy_interop.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/numpy_to_arrow.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/numpy_to_arrow.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/parquet_encryption.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/parquet_encryption.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/platform.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/pyarrow.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/pyarrow.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/pyarrow_api.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/pyarrow_lib.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/python_test.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/python_test.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/python_to_arrow.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/python_to_arrow.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/type_traits.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/udf.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/udf.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/util.cc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/util.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      copying pyarrow/src/arrow/python/visibility.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python
+      creating build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python/vendored
+      copying pyarrow/src/arrow/python/vendored/CMakeLists.txt -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python/vendored
+      copying pyarrow/src/arrow/python/vendored/pythoncapi_compat.h -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/src/arrow/python/vendored
+      creating build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/__init__.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/arrow_16597.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/arrow_39313.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/arrow_7980.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/bound_function_visit_strings.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/conftest.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/extensions.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/pandas_examples.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/pandas_threaded_import.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/pyarrow_cython_example.pyx -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/read_record_batch.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/strategies.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_acero.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_adhoc_memory_leak.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_array.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_builder.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_cffi.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_compute.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_convert_builtin.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_cpp_internals.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_csv.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_cuda.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_cuda_numba_interop.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_cython.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_dataset.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_dataset_encryption.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_deprecations.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_device.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_dlpack.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_exec_plan.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_extension_type.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_feather.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_flight.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_flight_async.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_fs.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_gandiva.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_gdb.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_io.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_ipc.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_json.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_jvm.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_memory.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_misc.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_orc.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_pandas.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_scalars.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_schema.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_sparse_tensor.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_strategies.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_substrait.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_table.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_tensor.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_types.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_udf.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_util.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/test_without_numpy.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/util.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      copying pyarrow/tests/wsgi_examples.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests
+      creating build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/data/feather
+      copying pyarrow/tests/data/feather/v0.17.0.version.2-compression.lz4.feather -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/data/feather
+      creating build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/data/orc
+      copying pyarrow/tests/data/orc/README.md -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/data/orc
+      copying pyarrow/tests/data/orc/TestOrcFile.emptyFile.jsn.gz -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/data/orc
+      copying pyarrow/tests/data/orc/TestOrcFile.emptyFile.orc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/data/orc
+      copying pyarrow/tests/data/orc/TestOrcFile.test1.jsn.gz -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/data/orc
+      copying pyarrow/tests/data/orc/TestOrcFile.test1.orc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/data/orc
+      copying pyarrow/tests/data/orc/TestOrcFile.testDate1900.jsn.gz -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/data/orc
+      copying pyarrow/tests/data/orc/TestOrcFile.testDate1900.orc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/data/orc
+      copying pyarrow/tests/data/orc/decimal.jsn.gz -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/data/orc
+      copying pyarrow/tests/data/orc/decimal.orc -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/data/orc
+      creating build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/data/parquet
+      copying pyarrow/tests/data/parquet/v0.7.1.all-named-index.parquet -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/data/parquet
+      copying pyarrow/tests/data/parquet/v0.7.1.column-metadata-handling.parquet -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/data/parquet
+      copying pyarrow/tests/data/parquet/v0.7.1.parquet -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/data/parquet
+      copying pyarrow/tests/data/parquet/v0.7.1.some-named-index.parquet -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/data/parquet
+      creating build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/interchange
+      copying pyarrow/tests/interchange/__init__.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/interchange
+      copying pyarrow/tests/interchange/test_conversion.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/interchange
+      copying pyarrow/tests/interchange/test_interchange_spec.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/interchange
+      creating build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/__init__.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/common.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/conftest.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/encryption.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/test_basic.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/test_compliant_nested_type.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/test_data_types.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/test_dataset.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/test_datetime.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/test_encryption.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/test_metadata.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/test_pandas.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/test_parquet_file.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/parquet
+      copying pyarrow/tests/parquet/test_parquet_writer.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/tests/parquet
+      creating build/lib.macosx-10.15-universal2-cpython-314/pyarrow/vendored
+      copying pyarrow/vendored/__init__.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/vendored
+      copying pyarrow/vendored/docscrape.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/vendored
+      copying pyarrow/vendored/version.py -> build/lib.macosx-10.15-universal2-cpython-314/pyarrow/vendored
+      running build_ext
+      creating /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-install-h8kq40eg/pyarrow_3199ecb1418f4c35b55c8c26ad9502c4/build/temp.macosx-10.15-universal2-cpython-314
+      -- Running cmake for PyArrow
+      cmake -DCMAKE_INSTALL_PREFIX=/private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-install-h8kq40eg/pyarrow_3199ecb1418f4c35b55c8c26ad9502c4/build/lib.macosx-10.15-universal2-cpython-314/pyarrow -DPYTHON_EXECUTABLE=/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14 -DPython3_EXECUTABLE=/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14 -DPYARROW_CXXFLAGS= -DPYARROW_BUNDLE_ARROW_CPP=off -DPYARROW_BUNDLE_CYTHON_CPP=off -DPYARROW_GENERATE_COVERAGE=off -DCMAKE_BUILD_TYPE=release /private/var/folders/cz/lypx7fsn3b727tg4h9dhn2400000gn/T/pip-install-h8kq40eg/pyarrow_3199ecb1418f4c35b55c8c26ad9502c4
+      error: command 'cmake' failed: No such file or directory
+      [end of output]
+
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+  ERROR: Failed building wheel for pyarrow
+Failed to build pyarrow
+error: failed-wheel-build-for-install
+
+× Failed to build installable wheels for some pyproject.toml based projects
+╰─> pyarrow
+
+~ took 9s
+❯
