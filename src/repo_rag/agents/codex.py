@@ -1,4 +1,4 @@
-"""OpenAI Codex CLI plugin."""
+"""OpenAI Codex CLI/Desktop plugin."""
 
 from __future__ import annotations
 
@@ -16,7 +16,7 @@ def _format_toml_snippet() -> str:
 
 class CodexAgent(AgentPlugin):
     name = "codex"
-    display = "OpenAI Codex CLI"
+    display = "OpenAI Codex CLI/Desktop"
 
     def _config_dir(self) -> Path:
         return Path.home() / ".codex"
