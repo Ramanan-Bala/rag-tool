@@ -17,6 +17,7 @@ docs/
 tests/
 scripts/
 *.md
+!README.md
 LICENSE
 .gitignore
 .dockerignore
