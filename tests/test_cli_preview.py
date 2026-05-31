@@ -58,7 +58,8 @@ def test_config_repo_init_writes_repo_config(fake_repo: Path, isolated_index_roo
     assert cfg_path.exists()
     content = cfg_path.read_text(encoding="utf-8")
     assert "exclude_globs" in content
-    assert "config.toml" in result.stdout
+    assert "Wrote" in result.stdout
+    assert "Edit exclude_globs" in result.stdout
 
 
 def test_config_show_path_uses_repo_config(fake_repo: Path, isolated_index_root: Path):
