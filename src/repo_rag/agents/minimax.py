@@ -13,7 +13,6 @@ from .base import (
     upsert_json_mcp_entry,
 )
 
-
 MINIMAX_MCP_ENTRY: dict[str, Any] = {
     "command": "rag",
     "args": ["mcp-server"],
@@ -52,7 +51,7 @@ class MinimaxAgent(AgentPlugin):
         return MCPHint(
             config_path=self._mcp_path(),
             config_snippet=(
-                '{\n'
+                "{\n"
                 '  "mcpServers": {\n'
                 '    "repo-rag": {\n'
                 '      "command": "rag",\n'
