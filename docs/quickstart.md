@@ -71,6 +71,7 @@ rag --help
 ```bash
 cd /path/to/your/repo
 rag init
+rag preview
 rag rebuild
 ```
 
@@ -81,6 +82,11 @@ about 80 MB) into a fastembed cache and produces:
 - `~/.repo-rag/<repo-id>/lancedb/` - vector store
 
 Nothing is written inside the repo apart from optional git hooks.
+
+For very large repos, `rag preview` shows the files, chunks, cache hits, and
+chunks that still need embedding before you start the rebuild. If the preview
+shows unwanted paths, create a repo-only config with `rag config repo-init` and
+edit `~/.repo-rag/<repo-id>/config.toml`.
 
 ## 4. Search
 

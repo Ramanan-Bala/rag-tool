@@ -170,7 +170,15 @@ def save_global_config(cfg: GlobalConfig) -> None:
     path = global_config_path()
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("wb") as f:
-        tomli_w.dump(cfg.model_dump(), f)
+        tomli_w.dump(cfg.model_dump(exclude_none=True), f)
+
+
+def save_repo_config(repo_id: str, cfg: GlobalConfig) -> Path:
+    path = repo_index_dir(repo_id) / "config.toml"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("wb") as f:
+        tomli_w.dump(cfg.model_dump(exclude_none=True), f)
+    return path
 
 
 def load_repo_config(repo_id: str) -> GlobalConfig:

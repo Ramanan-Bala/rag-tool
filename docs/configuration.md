@@ -6,7 +6,22 @@ repo-rag has two layers of configuration:
 2. **Per-repo**: `~/.repo-rag/<repo_id>/config.toml`. Merges shallowly on top
    of global.
 
-Write the default config explicitly with `rag config init`.
+Write the default global config explicitly with `rag config init`. Write the
+effective config for one registered repo with:
+
+```bash
+rag config repo-init /path/to/repo
+```
+
+The repo command writes `~/.repo-rag/<repo_id>/config.toml`; edit
+`exclude_globs` there when only one repository needs extra skips.
+
+Preview the resolved indexing inventory before rebuilding:
+
+```bash
+rag preview /path/to/repo
+rag preview /path/to/repo --all --sort embed
+```
 
 ## Schema
 

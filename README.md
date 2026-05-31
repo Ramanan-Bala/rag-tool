@@ -109,6 +109,23 @@ The global config lives at `~/.repo-rag/config.toml`. Override per-repo at
 `~/.repo-rag/<repo-id>/config.toml`. Every value can also be set with an
 environment variable (`RAG_EMBEDDING_PROVIDER`, `REPO_RAG_INDEX_DIR`, ...).
 
+Before a large rebuild, preview the exact inventory and likely cache/embed
+work:
+
+```bash
+rag preview
+rag preview --all --sort embed
+rag preview /path/to/repo --json
+```
+
+For repo-only exclusions, initialize the repo config and edit its
+`exclude_globs`:
+
+```bash
+rag config repo-init
+rag config show --path /path/to/repo
+```
+
 Full reference: [`docs/configuration.md`](docs/configuration.md).
 
 ## Storage layout

@@ -10,7 +10,7 @@ from pathlib import Path
 from mcp.server.fastmcp import FastMCP
 from mcp.types import ToolAnnotations
 
-from .config import load_global_config
+from .config import load_repo_config
 from .context import build_context_pack
 from .embedder import make_embedder
 from .memory import forget as memory_forget
@@ -37,7 +37,7 @@ def _open_repo(repo: str | None = None):
             f"Repo at {repo_root} is not registered with repo-rag. "
             f"Run `rag init` inside the repo first."
         )
-    cfg = load_global_config()
+    cfg = load_repo_config(repo_id)
     sqlite = SqliteStore(repo_index_dir(repo_id) / "metadata.sqlite")
     embedder = make_embedder(cfg.embedding)
     lance = LanceStore(repo_index_dir(repo_id) / "lancedb", embedder.dim)
@@ -157,7 +157,7 @@ def repo_rag_status(repo: str | None = None) -> str:
             }
         )
     sqlite = SqliteStore(repo_index_dir(repo_id) / "metadata.sqlite")
-    cfg = load_global_config()
+    cfg = load_repo_config(repo_id)
     status = {
         "repo": str(repo_root),
         "repo_id": repo_id,

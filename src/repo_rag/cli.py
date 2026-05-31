@@ -23,7 +23,7 @@ from rich.table import Table
 
 from . import __version__
 from .agents.registry import iter_plugins, resolve_target
-from .config import load_global_config, save_global_config
+from .config import load_global_config, load_repo_config, save_global_config, save_repo_config
 from .context import build_context_pack
 from .embedder import make_embedder
 from .hooks import install as hooks_install_fn
@@ -33,6 +33,7 @@ from .memory import forget as memory_forget
 from .memory import list_notes as list_memory_notes
 from .memory import remember as memory_remember
 from .paths import find_repo_root, get_index_root, repo_index_dir
+from .preview import build_index_preview, preview_to_dict
 from .registry import lookup, register_repo, remove_repo
 from .search import hybrid_search
 from .store.lance import LanceStore
@@ -51,6 +52,8 @@ app.add_typer(agents_app, name="agents")
 app.add_typer(droid_app, name="droid")
 app.add_typer(config_app, name="config")
 console = Console()
+
+PREVIEW_SORT_KEYS = {"path", "size", "chunks", "embed"}
 
 
 def _version_callback(value: bool) -> None:
@@ -86,6 +89,10 @@ def _require_repo_id(repo_root: Path) -> str:
     return repo_id
 
 
+def _load_effective_config(repo_id: str):
+    return load_repo_config(repo_id)
+
+
 def _fmt_eta(seconds: float | None) -> str:
     if seconds is None or seconds < 0 or seconds != seconds:
         return "--:--"
@@ -95,6 +102,15 @@ def _fmt_eta(seconds: float | None) -> str:
     if h > 0:
         return f"{h:d}h{m:02d}m"
     return f"{m:02d}:{s:02d}"
+
+
+def _fmt_bytes(size: int) -> str:
+    value = float(size)
+    for unit in ("B", "KB", "MB", "GB"):
+        if value < 1024 or unit == "GB":
+            return f"{value:.1f} {unit}" if unit != "B" else f"{int(value)} B"
+        value /= 1024
+    return f"{value:.1f} GB"
 
 
 def _make_progress() -> Progress:
@@ -430,7 +446,7 @@ def index(
         force_threads(threads)
     repo_root = _resolve_repo(path)
     repo_id = _require_repo_id(repo_root)
-    cfg = load_global_config()
+    cfg = _load_effective_config(repo_id)
     if window_size and window_size > 0:
         effective_window = window_size
     elif sequential:
@@ -517,7 +533,7 @@ def rebuild(
         force_threads(threads)
     repo_root = _resolve_repo(path)
     repo_id = _require_repo_id(repo_root)
-    cfg = load_global_config()
+    cfg = _load_effective_config(repo_id)
     if window_size and window_size > 0:
         effective_window = window_size
     elif sequential:
@@ -548,6 +564,89 @@ def rebuild(
 
 
 @app.command()
+def preview(
+    path: str | None = typer.Argument(None, help="Repo path. Defaults to cwd."),
+    changed: bool = typer.Option(False, "--changed", help="Preview only changed files."),
+    show_all: bool = typer.Option(False, "--all", help="Show every file in text output."),
+    limit: int = typer.Option(20, "--limit", help="Limit file rows in text output."),
+    sort: str = typer.Option(
+        "embed",
+        "--sort",
+        help="Sort file rows by path, size, chunks, or embed.",
+    ),
+    as_json: bool = typer.Option(False, "--json", help="Emit JSON."),
+):
+    """Show what would be indexed before running index/rebuild."""
+    if sort not in PREVIEW_SORT_KEYS:
+        console.print("[red]--sort must be one of: path, size, chunks, embed[/red]")
+        raise typer.Exit(code=2)
+    repo_root = _resolve_repo(path)
+    repo_id = _require_repo_id(repo_root)
+    cfg = _load_effective_config(repo_id)
+    report = build_index_preview(repo_root, repo_id, cfg, changed_only=changed)
+    if as_json:
+        typer.echo(json.dumps(preview_to_dict(report, include_files=True), indent=2))
+        return
+
+    console.print(f"[bold]repo[/bold]: {report.repo_root}")
+    console.print(f"[bold]index_id[/bold]: {report.repo_id}")
+    console.print(f"[bold]config[/bold]: {report.config_path}")
+    console.print(f"[bold]files[/bold]: {report.total_files}")
+    console.print(f"[bold]size[/bold]: {_fmt_bytes(report.total_bytes)}")
+    console.print(
+        f"[bold]chunks[/bold]: {report.total_chunks} "
+        f"cached={report.cached_chunks} embed={report.embed_chunks}"
+    )
+
+    ext_table = Table(show_header=True, header_style="bold cyan")
+    ext_table.add_column("extension")
+    ext_table.add_column("files", justify="right")
+    ext_table.add_column("size", justify="right")
+    ext_table.add_column("chunks", justify="right")
+    ext_table.add_column("embed", justify="right")
+    for group in report.by_extension()[:10]:
+        ext_table.add_row(
+            group.key,
+            str(group.files),
+            _fmt_bytes(group.bytes),
+            str(group.chunks),
+            str(group.embed_chunks),
+        )
+    console.print(ext_table)
+
+    files = list(report.files)
+    if sort == "path":
+        files.sort(key=lambda item: item.path)
+    elif sort == "size":
+        files.sort(key=lambda item: (-item.size_bytes, item.path))
+    elif sort == "chunks":
+        files.sort(key=lambda item: (-item.chunks, item.path))
+    else:
+        files.sort(key=lambda item: (-item.embed_chunks, item.path))
+    if show_all or files:
+        file_limit = len(files) if show_all else max(0, limit)
+        file_table = Table(show_header=True, header_style="bold cyan")
+        file_table.add_column("path")
+        file_table.add_column("size", justify="right")
+        file_table.add_column("lang")
+        file_table.add_column("chunks", justify="right")
+        file_table.add_column("cached", justify="right")
+        file_table.add_column("embed", justify="right")
+        for item in files[:file_limit]:
+            file_table.add_row(
+                item.path,
+                _fmt_bytes(item.size_bytes),
+                item.language,
+                str(item.chunks),
+                str(item.cached_chunks),
+                str(item.embed_chunks),
+            )
+        console.print(file_table)
+        if not show_all and len(files) > file_limit:
+            console.print(f"[dim]Use --all to show all {len(files)} files.[/dim]")
+
+
+@app.command()
 def context(
     task: str = typer.Argument(...),
     path: str | None = typer.Option(None, "--path"),
@@ -557,7 +656,7 @@ def context(
     """Produce a markdown context pack for the given task."""
     repo_root = _resolve_repo(path)
     repo_id = _require_repo_id(repo_root)
-    cfg = load_global_config()
+    cfg = _load_effective_config(repo_id)
     sqlite = SqliteStore(repo_index_dir(repo_id) / "metadata.sqlite")
     embedder = make_embedder(cfg.embedding)
     lance = LanceStore(repo_index_dir(repo_id) / "lancedb", embedder.dim)
@@ -581,7 +680,7 @@ def ask(
     """Search for chunks answering a question, print short previews."""
     repo_root = _resolve_repo(path)
     repo_id = _require_repo_id(repo_root)
-    cfg = load_global_config()
+    cfg = _load_effective_config(repo_id)
     sqlite = SqliteStore(repo_index_dir(repo_id) / "metadata.sqlite")
     embedder = make_embedder(cfg.embedding)
     lance = LanceStore(repo_index_dir(repo_id) / "lancedb", embedder.dim)
@@ -608,7 +707,7 @@ def search(
     """Hybrid search (use --json for programmatic output)."""
     repo_root = _resolve_repo(path)
     repo_id = _require_repo_id(repo_root)
-    cfg = load_global_config()
+    cfg = _load_effective_config(repo_id)
     sqlite = SqliteStore(repo_index_dir(repo_id) / "metadata.sqlite")
     embedder = make_embedder(cfg.embedding)
     lance = LanceStore(repo_index_dir(repo_id) / "lancedb", embedder.dim)
@@ -700,7 +799,7 @@ def status(path: str | None = typer.Option(None, "--path")):
     if not repo_id:
         console.print("[yellow]Not registered.[/yellow] Run `rag init` then `rag rebuild`.")
         return
-    cfg = load_global_config()
+    cfg = _load_effective_config(repo_id)
     index_dir = repo_index_dir(repo_id)
     sqlite = SqliteStore(index_dir / "metadata.sqlite")
     console.print(f"[bold]index_id[/bold]: {repo_id}")
@@ -1024,9 +1123,14 @@ def droid_uninstall():
 
 
 @config_app.command("show")
-def config_show():
-    """Print the effective global config."""
-    cfg = load_global_config()
+def config_show(path: str | None = typer.Option(None, "--path", help="Show repo config merge.")):
+    """Print the effective global config, or a repo merge with --path."""
+    if path:
+        repo_root = _resolve_repo(path)
+        repo_id = _require_repo_id(repo_root)
+        cfg = _load_effective_config(repo_id)
+    else:
+        cfg = load_global_config()
     typer.echo(json.dumps(cfg.model_dump(), indent=2))
 
 
@@ -1036,6 +1140,17 @@ def config_init():
     cfg = load_global_config()
     save_global_config(cfg)
     console.print(f"[green]Wrote[/green] {get_index_root() / 'config.toml'}")
+
+
+@config_app.command("repo-init")
+def config_repo_init(path: str | None = typer.Argument(None, help="Repo path. Defaults to cwd.")):
+    """Write the effective config to this repo's index folder."""
+    repo_root = _resolve_repo(path)
+    repo_id = _require_repo_id(repo_root)
+    cfg = _load_effective_config(repo_id)
+    cfg_path = save_repo_config(repo_id, cfg)
+    console.print(f"[green]Wrote[/green] {cfg_path}")
+    console.print("Edit exclude_globs here to skip files only for this repo.")
 
 
 if __name__ == "__main__":
