@@ -18,6 +18,7 @@ EXPECTED_NAMES = {
     "gemini",
     "antigravity",
     "aider",
+    "minimax",
     "zed",
 }
 

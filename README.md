@@ -8,7 +8,7 @@
 > Local RAG indexer and MCP server for AI coding agents. Run it once per
 > repo, and every MCP-compatible agent on your machine - Claude Code,
 > Claude Desktop, Cursor, Windsurf, Codex CLI/Desktop, Gemini CLI, Factory Droid,
-> Antigravity, Aider, Cline, Continue.dev, Zed, and any future
+> MiniMax Agent, Antigravity, Aider, Cline, Continue.dev, Zed, and any future
 > `AGENTS.md`-aware tool - searches your code through the same hybrid
 > keyword + vector index instead of grepping blind.
 
@@ -68,6 +68,7 @@ That's it. Open Claude Code, Cursor, or any other supported agent and ask
 | Gemini CLI | `~/.gemini/GEMINI.md`, `<repo>/GEMINI.md` | yes | [`docs/clients/gemini.md`](docs/clients/gemini.md) |
 | Google Antigravity | `~/.antigravity/AGENTS.md`, `<repo>/AGENTS.md` | yes | [`docs/clients/antigravity.md`](docs/clients/antigravity.md) |
 | Aider | `~/.aider/CONVENTIONS.md`, `<repo>/CONVENTIONS.md` | reference YAML | [`docs/clients/aider.md`](docs/clients/aider.md) |
+| MiniMax Agent | `<repo>/AGENTS.md` | yes | [`docs/clients/minimax.md`](docs/clients/minimax.md) |
 | Zed | `<zed-config>/.rules`, `<repo>/.rules` | yes (`context_servers`) | [`docs/clients/zed.md`](docs/clients/zed.md) |
 | Universal (AGENTS.md) | `~/.config/repo-rag/AGENTS.md`, `<repo>/AGENTS.md` | n/a | [`docs/clients/universal.md`](docs/clients/universal.md) |
 

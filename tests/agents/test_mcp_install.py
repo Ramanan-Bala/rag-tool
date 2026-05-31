@@ -16,6 +16,7 @@ from repo_rag.agents.continue_ import ContinueAgent
 from repo_rag.agents.cursor import CursorAgent
 from repo_rag.agents.factory import FactoryAgent
 from repo_rag.agents.gemini import GeminiAgent
+from repo_rag.agents.minimax import MinimaxAgent
 from repo_rag.agents.windsurf import WindsurfAgent
 from repo_rag.agents.zed import ZedAgent
 
@@ -110,6 +111,32 @@ def test_antigravity_mcp_writes_to_dotdir(fake_home: Path):
     result = AntigravityAgent().install_mcp(scope="user")
     assert result is not None
     assert result.path == fake_home / ".antigravity" / "mcp.json"
+
+
+def test_minimax_mcp_writes_to_minimax_mcp_json(fake_home: Path):
+    result = MinimaxAgent().install_mcp(scope="user")
+    assert result is not None
+    assert result.path == fake_home / ".minimax" / "mcp" / "mcp.json"
+    data = _load_json(result.path)
+    assert data["mcpServers"]["repo-rag"] == {
+        "command": "rag",
+        "args": ["mcp-server"],
+        "enabled": True,
+        "configured": True,
+    }
+
+
+def test_minimax_mcp_preserves_builtin_entries(fake_home: Path):
+    path = fake_home / ".minimax" / "mcp" / "mcp.json"
+    path.parent.mkdir(parents=True)
+    path.write_text(
+        json.dumps({"mcpServers": {"playwright": {"command": "npx"}}}),
+        encoding="utf-8",
+    )
+    MinimaxAgent().install_mcp(scope="user")
+    data = _load_json(path)
+    assert data["mcpServers"]["playwright"] == {"command": "npx"}
+    assert "repo-rag" in data["mcpServers"]
 
 
 def test_zed_uses_context_servers_key(fake_home: Path):
