@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import subprocess
 from collections.abc import Iterable, Iterator
+from dataclasses import dataclass
 from pathlib import Path
 
 import pathspec
@@ -116,15 +117,39 @@ def is_binary(path: Path, peek: int = 4096) -> bool:
     return nontext / len(chunk) > 0.30
 
 
-def load_gitignore(repo_root: Path) -> pathspec.PathSpec:
-    patterns: list[str] = []
-    gi = repo_root / ".gitignore"
-    if gi.exists():
+@dataclass(frozen=True)
+class GitignoreMatcher:
+    specs: tuple[tuple[str, pathspec.PathSpec], ...]
+
+    def match_file(self, rel_path: str) -> bool:
+        for base, spec in self.specs:
+            if base:
+                prefix = f"{base}/"
+                if not rel_path.startswith(prefix):
+                    continue
+                scoped_path = rel_path[len(prefix) :]
+            else:
+                scoped_path = rel_path
+            if spec.match_file(scoped_path):
+                return True
+        return False
+
+
+def load_gitignore(repo_root: Path) -> GitignoreMatcher:
+    specs: list[tuple[str, pathspec.PathSpec]] = []
+    for gi in sorted(repo_root.rglob(".gitignore")):
         try:
-            patterns.extend(gi.read_text(encoding="utf-8", errors="replace").splitlines())
+            patterns = gi.read_text(encoding="utf-8", errors="replace").splitlines()
         except OSError:
-            pass
-    return pathspec.PathSpec.from_lines("gitwildmatch", patterns)
+            continue
+        try:
+            base = gi.parent.relative_to(repo_root).as_posix()
+        except ValueError:
+            continue
+        if base == ".":
+            base = ""
+        specs.append((base, pathspec.PathSpec.from_lines("gitwildmatch", patterns)))
+    return GitignoreMatcher(tuple(specs))
 
 
 def make_pathspec(globs: Iterable[str]) -> pathspec.PathSpec:
