@@ -121,8 +121,14 @@ def test_minimax_mcp_writes_to_minimax_mcp_json(fake_home: Path):
     assert data["mcpServers"]["repo-rag"] == {
         "command": "rag",
         "args": ["mcp-server"],
+        "env": {},
         "enabled": True,
         "configured": True,
+        "description": (
+            "Local RAG indexer - search code with hybrid keyword + vector search. "
+            "Tools: repo_rag_search, repo_rag_get_context, repo_rag_remember, "
+            "repo_rag_forget, repo_rag_status"
+        ),
     }
 
 

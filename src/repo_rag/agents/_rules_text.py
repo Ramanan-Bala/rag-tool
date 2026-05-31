@@ -102,9 +102,9 @@ def md_block() -> str:
     return f"{MD_BEGIN}\n{_BODY.rstrip()}\n{MD_END}\n"
 
 
-def upsert_md_block(existing: str) -> str:
+def upsert_md_block(existing: str, *, block: str | None = None) -> str:
     """Insert or replace the marker-tagged Markdown block inside ``existing``."""
-    block = md_block()
+    block = block or md_block()
     if MD_BEGIN in existing and MD_END in existing:
         head, _, rest = existing.partition(MD_BEGIN)
         _, _, tail = rest.partition(MD_END)

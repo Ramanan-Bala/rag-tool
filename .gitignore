@@ -47,3 +47,6 @@ desktop.ini
 
 # Build outputs
 *.spec
+
+#agents
+.minimax

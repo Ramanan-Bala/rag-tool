@@ -59,9 +59,17 @@ class AgentPlugin(ABC):
         """Where this agent reads user-scope rules. ``None`` if the agent has none."""
         return None
 
+    def user_rules_display_path(self) -> str | Path | None:
+        """Human-readable user-scope rules location for list output."""
+        return self.user_rules_path()
+
     def project_rules_path(self, repo_root: Path) -> Path | None:
         """Where this agent reads project-scope rules. ``None`` if the agent has none."""
         return repo_root / "AGENTS.md"
+
+    def rules_block(self) -> str:
+        """Return the marker-tagged Markdown rules block for this agent."""
+        return _rules_text.md_block()
 
     def _resolve_rules_path(self, scope: Scope, repo_root: Path | None) -> Path | None:
         if scope == "user":
@@ -83,7 +91,7 @@ class AgentPlugin(ABC):
             return InstallResult(path=None, skipped_reason=f"no {scope} rules path for {self.name}")
         path.parent.mkdir(parents=True, exist_ok=True)
         existing = path.read_text(encoding="utf-8") if path.exists() else ""
-        new_content = _rules_text.upsert_md_block(existing)
+        new_content = _rules_text.upsert_md_block(existing, block=self.rules_block())
         if new_content != existing:
             path.write_text(new_content, encoding="utf-8")
             return InstallResult(path=path, written=True)

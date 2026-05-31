@@ -51,7 +51,7 @@ app.add_typer(hooks_app, name="hooks")
 app.add_typer(agents_app, name="agents")
 app.add_typer(droid_app, name="droid")
 app.add_typer(config_app, name="config")
-console = Console()
+console = Console(width=120)
 
 PREVIEW_SORT_KEYS = {"path", "size", "chunks", "embed"}
 
@@ -914,8 +914,16 @@ def _selected_plugins(target: str | None, detected_only: bool):
     return plugins
 
 
-def _format_path(path: Path | None) -> str:
-    return str(path) if path else "-"
+def _format_path(path: str | Path | None) -> str:
+    if not path:
+        return "-"
+    text = str(path)
+    home = str(Path.home())
+    if text == home:
+        return "~"
+    if text.startswith(home + "/"):
+        return "~/" + text.removeprefix(home + "/")
+    return text
 
 
 @agents_app.command("list")
@@ -925,11 +933,11 @@ def agents_list_cmd():
     table.add_column("name")
     table.add_column("display")
     table.add_column("detected")
-    table.add_column("user rules")
+    table.add_column("user rules", overflow="ignore", no_wrap=True)
     table.add_column("auto MCP")
     for plugin in iter_plugins():
         detected = "yes" if plugin.detect() else "no"
-        rules_path = plugin.user_rules_path() if not plugin.rules_optional else None
+        rules_path = plugin.user_rules_display_path() if not plugin.rules_optional else None
         auto_mcp = "yes" if _supports_auto_mcp(plugin) else "no"
         table.add_row(plugin.name, plugin.display, detected, _format_path(rules_path), auto_mcp)
     console.print(table)
@@ -1021,7 +1029,7 @@ def _print_mcp_hint(display: str, hint) -> None:
     if hint.config_snippet:
         console.print("    snippet:")
         for line in hint.config_snippet.rstrip().splitlines():
-            console.print(f"      {line}")
+            console.print(f"      {line}", soft_wrap=True)
     for note in hint.notes:
         console.print(f"    note: {note}")
 
@@ -1068,11 +1076,16 @@ def agents_uninstall_cmd(
 
 
 @agents_app.command("print-rules")
-def agents_print_rules_cmd():
+def agents_print_rules_cmd(
+    target: str | None = typer.Option(None, "--target", help="Plugin name."),
+):
     """Dump the rules Markdown that gets installed into agent rules files."""
     from .agents import _rules_text as rt
 
-    typer.echo(rt.md_block())
+    if target:
+        typer.echo(resolve_target(target).rules_block())
+    else:
+        typer.echo(rt.md_block())
 
 
 @agents_app.command("print-mcp")
@@ -1090,7 +1103,7 @@ def agents_print_mcp_cmd(
             console.print(f"  file:    {hint.config_path}")
         if hint.config_snippet:
             for line in hint.config_snippet.rstrip().splitlines():
-                console.print(f"  {line}")
+                console.print(f"  {line}", soft_wrap=True)
         for note in hint.notes:
             console.print(f"  note: {note}")
 
