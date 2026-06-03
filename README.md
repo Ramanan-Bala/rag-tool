@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ramanan-bala/repo-rag/main/docs/assets/logo.svg" alt="repo-rag" width="420">
+  <img src="https://raw.githubusercontent.com/Ramanan-Bala/rag-tool/main/docs/assets/logo.svg" alt="repo-rag" width="420">
 </p>
 
 # repo-rag
 
 [![PyPI version](https://img.shields.io/pypi/v/repo-rag.svg)](https://pypi.org/project/repo-rag/)
-[![CI](https://github.com/ramanan-bala/repo-rag/actions/workflows/ci.yml/badge.svg)](https://github.com/ramanan-bala/repo-rag/actions/workflows/ci.yml)
+[![CI](https://github.com/Ramanan-Bala/rag-tool/actions/workflows/release.yml/badge.svg)](https://github.com/Ramanan-Bala/rag-tool/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/pypi/pyversions/repo-rag.svg)](https://pypi.org/project/repo-rag/)
 
