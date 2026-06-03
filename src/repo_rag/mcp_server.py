@@ -112,7 +112,9 @@ def repo_rag_find_related(
         }
         for h in hits
     ]
-    return json.dumps({"repo": str(repo_root), "anchor": f"{file_path}:{line}", "results": payload}, indent=2)
+    return json.dumps(
+        {"repo": str(repo_root), "anchor": f"{file_path}:{line}", "results": payload}, indent=2
+    )
 
 
 @mcp.tool(

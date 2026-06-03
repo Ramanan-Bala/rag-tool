@@ -702,9 +702,7 @@ def search(
     query: str = typer.Argument(...),
     path: str | None = typer.Option(None, "--path"),
     top_k: int = typer.Option(20, "--top-k"),
-    content: str = typer.Option(
-        "all", "--content", help="Scope: all | code | docs | config."
-    ),
+    content: str = typer.Option("all", "--content", help="Scope: all | code | docs | config."),
     as_json: bool = typer.Option(False, "--json"),
 ):
     """Hybrid search (use --json for programmatic output)."""

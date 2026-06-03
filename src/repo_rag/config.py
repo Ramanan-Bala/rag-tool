@@ -105,9 +105,9 @@ DEFAULT_EXCLUDE_GLOBS = [
 
 
 class EmbeddingConfig(BaseModel):
-    provider: Literal[
-        "model2vec", "fastembed", "sentence_transformers", "ollama", "openai"
-    ] = "model2vec"
+    provider: Literal["model2vec", "fastembed", "sentence_transformers", "ollama", "openai"] = (
+        "model2vec"
+    )
     model: str = "minishlab/potion-code-16M"
     dim: int = 256
     base_url: str | None = None

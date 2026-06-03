@@ -163,9 +163,7 @@ def chunk_text(
     overlap_chars = _approx_tokens_to_chars(overlap_tokens)
 
     segments: list[tuple[int, str]] = []
-    ts_segments = (
-        _tree_sitter_segments(text, path, lang) if (is_code and use_tree_sitter) else None
-    )
+    ts_segments = _tree_sitter_segments(text, path, lang) if (is_code and use_tree_sitter) else None
     if is_code and ts_segments is not None:
         segments = ts_segments
     elif is_code:
