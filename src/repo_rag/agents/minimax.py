@@ -15,17 +15,19 @@ from .base import (
     upsert_json_mcp_entry,
 )
 
+MINIMAX_MCP_DESCRIPTION = (
+    "Local RAG indexer - search code with hybrid keyword + vector search. "
+    "Tools: repo_rag_search, repo_rag_get_context, repo_rag_remember, "
+    "repo_rag_forget, repo_rag_status"
+)
+
 MINIMAX_MCP_ENTRY: dict[str, Any] = {
     "command": "rag",
     "args": ["mcp-server"],
     "env": {},
     "enabled": True,
     "configured": True,
-    "description": (
-        "Local RAG indexer - search code with hybrid keyword + vector search. "
-        "Tools: repo_rag_search, repo_rag_get_context, repo_rag_remember, "
-        "repo_rag_forget, repo_rag_status"
-    ),
+    "description": MINIMAX_MCP_DESCRIPTION,
 }
 
 MINIMAX_BUILTIN_MARKER = "<!-- mavis:builtin-agent-md-stub v2 -->"

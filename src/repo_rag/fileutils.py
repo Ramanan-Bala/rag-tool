@@ -87,6 +87,23 @@ CODE_LANGS = {
 
 PROSE_LANGS = {"markdown", "rst", "text", "html"}
 
+CONFIG_LANGS = {"json", "yaml", "toml", "xml", "ini", "dockerfile"}
+
+
+def languages_for_content(content: str) -> set[str] | None:
+    """Map a content mode to the set of allowed chunk languages.
+
+    Returns None for "all" (no filtering). Unknown modes also return None.
+    """
+    mode = (content or "all").strip().lower()
+    if mode == "code":
+        return set(CODE_LANGS)
+    if mode == "docs":
+        return set(PROSE_LANGS)
+    if mode == "config":
+        return set(CONFIG_LANGS)
+    return None
+
 
 def detect_language(path: Path) -> str:
     name = path.name.lower()

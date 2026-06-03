@@ -105,9 +105,11 @@ DEFAULT_EXCLUDE_GLOBS = [
 
 
 class EmbeddingConfig(BaseModel):
-    provider: Literal["fastembed", "sentence_transformers", "ollama", "openai"] = "fastembed"
-    model: str = "BAAI/bge-small-en-v1.5"
-    dim: int = 384
+    provider: Literal[
+        "model2vec", "fastembed", "sentence_transformers", "ollama", "openai"
+    ] = "model2vec"
+    model: str = "minishlab/potion-code-16M"
+    dim: int = 256
     base_url: str | None = None
     api_key_env: str = "RAG_EMBEDDING_API_KEY"
     batch_size: int = 32
@@ -118,12 +120,20 @@ class ChunkingConfig(BaseModel):
     prose_chunk_tokens: int = 1500
     overlap_tokens: int = 150
     max_file_bytes: int = 1_000_000
+    use_tree_sitter: bool = True
 
 
 class RetrievalConfig(BaseModel):
     top_k: int = 20
     vector_weight: float = 0.6
     keyword_weight: float = 0.4
+    symbol_vector_weight: float = 0.35
+    symbol_keyword_weight: float = 0.65
+    rrf_k: int = 60
+    definition_boost: float = 0.15
+    identifier_stem_boost: float = 0.10
+    file_coherence_boost: float = 0.05
+    noise_penalty: float = 0.10
     recency_boost: float = 0.05
     max_context_tokens: int = 6000
 

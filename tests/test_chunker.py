@@ -1,6 +1,26 @@
 from pathlib import Path
 
+import repo_rag.chunker as chunker
 from repo_rag.chunker import chunk_text
+
+
+def test_python_chunks_use_tree_sitter_by_default(tmp_path: Path, monkeypatch):
+    p = tmp_path / "m.py"
+    src = "def alpha():\n    return 1\n"
+    p.write_text(src, encoding="utf-8")
+    calls = []
+
+    def fake_tree_sitter_segments(text, path, lang):
+        calls.append((text, path, lang))
+        return [(0, "def alpha():\n    return 1\n")]
+
+    monkeypatch.setattr(chunker, "_tree_sitter_segments", fake_tree_sitter_segments)
+
+    chunks = chunk_text(p, "m.py", src, code_tokens=200, prose_tokens=1500, overlap_tokens=20)
+
+    assert calls == [(src, p, "python")]
+    assert len(chunks) == 1
+    assert chunks[0].content == src
 
 
 def test_python_chunks_split_on_def(tmp_path: Path):

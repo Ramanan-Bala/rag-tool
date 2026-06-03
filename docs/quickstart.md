@@ -39,10 +39,10 @@ codebase, but the dependency stack is duplicated for each venv.
 
 ### Footprint disclosure
 
-Either install path pulls in lancedb, pyarrow, fastembed, and onnxruntime
-as transitive dependencies. Plan for **~500 MB on disk** for the dependency
-stack. The `repo-rag` wheel itself is well under 1 MB - the size is native
-binaries from the vector-store and embedding stack.
+Either install path pulls in lancedb, pyarrow, model2vec, fastembed,
+tree-sitter, and onnxruntime as dependencies. Plan for **~500 MB on disk** for
+the dependency stack. The `repo-rag` wheel itself is well under 1 MB - the size
+is native binaries from the vector-store, parser, and embedding stack.
 
 ### Or with Docker
 

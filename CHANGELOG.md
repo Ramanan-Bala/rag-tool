@@ -7,6 +7,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.5] - 2026-06-01
+
+### Added
+
+- New `model2vec` embedding provider using code-specialized static embeddings
+  (`minishlab/potion-code-16M`); it is now the **default** for fast, local,
+  code-focused retrieval. `fastembed` remains bundled as the transformer
+  fallback (better for prose/docs). The provider auto-trusts the OS certificate
+  store (via `truststore`) and skips non-essential `*.py` files so model
+  downloads work behind TLS-inspecting corporate proxies.
+- `repo_rag_find_related` MCP tool and `rag find-related <file> <line>` CLI to
+  surface code semantically similar to a known location.
+- Content scoping for search: `rag search --content code|docs|config|all` and a
+  matching `content` argument on the `repo_rag_search` / `repo_rag_get_context`
+  MCP tools.
+- Tree-sitter AST-aware chunking is installed and enabled by default
+  (`chunking.use_tree_sitter`), with automatic fallback to regex chunking when
+  a file's parser is unavailable or unsupported.
+
+### Changed
+
+- Retrieval ranking rewritten: Reciprocal Rank Fusion of vector + BM25 results,
+  adaptive vector/keyword weighting for symbol-like queries, definition boosts,
+  identifier sub-token matching, file-coherence boosts, and noise penalties for
+  test/legacy/example files. `recency_boost` is now actually applied.
+
+### Fixed
+
+- `agents list` now renders correctly on Windows (paths are normalized so the
+  `~` home shortcut applies, preventing the table from collapsing).
+- `agents print-mcp` now emits the MCP JSON snippet as plain text so it is valid
+  and copy-pasteable (previously Rich highlighting injected ANSI codes).
+
 ## [0.1.3] - 2026-05-31
 
 ### Added
@@ -44,7 +77,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Windowed batch indexer with `--window-size`, `--pace-sec`, `--sequential`, `--full-speed`, `--threads`, and `--changed` flags.
 - Six-section Code Search Policy installable into any agent's rules file via `rag agents setup`.
 
-[Unreleased]: https://github.com/ramanan-bala/repo-rag/compare/v0.1.3...HEAD
+[Unreleased]: https://github.com/ramanan-bala/repo-rag/compare/v0.1.5...HEAD
+[0.1.5]: https://github.com/ramanan-bala/repo-rag/compare/v0.1.4...v0.1.5
+[0.1.5]: https://github.com/ramanan-bala/repo-rag/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/ramanan-bala/repo-rag/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/ramanan-bala/repo-rag/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/ramanan-bala/repo-rag/compare/v0.1.0...v0.1.1

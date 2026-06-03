@@ -35,7 +35,7 @@ from .memory import remember as memory_remember
 from .paths import find_repo_root, get_index_root, repo_index_dir
 from .preview import build_index_preview, preview_to_dict
 from .registry import lookup, register_repo, remove_repo
-from .search import hybrid_search
+from .search import find_related, hybrid_search
 from .store.lance import LanceStore
 from .store.sqlite import SqliteStore
 
@@ -702,6 +702,9 @@ def search(
     query: str = typer.Argument(...),
     path: str | None = typer.Option(None, "--path"),
     top_k: int = typer.Option(20, "--top-k"),
+    content: str = typer.Option(
+        "all", "--content", help="Scope: all | code | docs | config."
+    ),
     as_json: bool = typer.Option(False, "--json"),
 ):
     """Hybrid search (use --json for programmatic output)."""
@@ -711,7 +714,7 @@ def search(
     sqlite = SqliteStore(repo_index_dir(repo_id) / "metadata.sqlite")
     embedder = make_embedder(cfg.embedding)
     lance = LanceStore(repo_index_dir(repo_id) / "lancedb", embedder.dim)
-    hits = hybrid_search(query, embedder, lance, sqlite, cfg, top_k=top_k)
+    hits = hybrid_search(query, embedder, lance, sqlite, cfg, top_k=top_k, content=content)
     if as_json:
         payload = [
             {
@@ -741,6 +744,49 @@ def search(
                 "+".join(h.sources),
             )
         console.print(table)
+
+
+@app.command("find-related")
+def find_related_cmd(
+    file_path: str = typer.Argument(..., help="File path of a known location."),
+    line: int = typer.Argument(..., help="Line number within that file."),
+    path: str | None = typer.Option(None, "--path"),
+    top_k: int = typer.Option(10, "--top-k"),
+    as_json: bool = typer.Option(False, "--json"),
+):
+    """Find code similar to a known location (file path + line)."""
+    repo_root = _resolve_repo(path)
+    repo_id = _require_repo_id(repo_root)
+    cfg = _load_effective_config(repo_id)
+    sqlite = SqliteStore(repo_index_dir(repo_id) / "metadata.sqlite")
+    embedder = make_embedder(cfg.embedding)
+    lance = LanceStore(repo_index_dir(repo_id) / "lancedb", embedder.dim)
+    hits = find_related(file_path, line, embedder, lance, sqlite, cfg, top_k=top_k)
+    if as_json:
+        payload = [
+            {
+                "chunk_id": h.chunk_id,
+                "path": h.path,
+                "score": h.score,
+                "start_line": h.start_line,
+                "end_line": h.end_line,
+                "language": h.language,
+                "content": h.content,
+            }
+            for h in hits
+        ]
+        typer.echo(json.dumps(payload, indent=2))
+        return
+    if not hits:
+        console.print("[yellow]No related chunks found (is the file indexed?).[/yellow]")
+        return
+    table = Table(show_header=True, header_style="bold cyan")
+    table.add_column("score")
+    table.add_column("path")
+    table.add_column("lines")
+    for h in hits:
+        table.add_row(f"{h.score:.3f}", h.path, f"{h.start_line}-{h.end_line}")
+    console.print(table)
 
 
 @app.command()
@@ -917,8 +963,8 @@ def _selected_plugins(target: str | None, detected_only: bool):
 def _format_path(path: str | Path | None) -> str:
     if not path:
         return "-"
-    text = str(path)
-    home = str(Path.home())
+    text = str(path).replace("\\", "/")
+    home = str(Path.home()).replace("\\", "/")
     if text == home:
         return "~"
     if text.startswith(home + "/"):
@@ -1097,15 +1143,17 @@ def agents_print_mcp_cmd(
     for plugin in plugins:
         hint = plugin.mcp_hint()
         console.print(f"\n[bold]{plugin.display}[/bold] ([cyan]{plugin.name}[/cyan])")
+        # Emit the machine-readable parts as plain text (no Rich highlighting/markup)
+        # so the JSON snippet stays valid and copy-pasteable.
         if hint.command:
-            console.print(f"  command: {hint.command}")
+            typer.echo(f"  command: {hint.command}")
         if hint.config_path:
-            console.print(f"  file:    {hint.config_path}")
+            typer.echo(f"  file:    {hint.config_path}")
         if hint.config_snippet:
             for line in hint.config_snippet.rstrip().splitlines():
-                console.print(f"  {line}", soft_wrap=True)
+                typer.echo(f"  {line}")
         for note in hint.notes:
-            console.print(f"  note: {note}")
+            typer.echo(f"  note: {note}")
 
 
 @droid_app.command("setup")

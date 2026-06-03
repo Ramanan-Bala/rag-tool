@@ -174,6 +174,37 @@ class SqliteStore:
     def get_chunk(self, chunk_id: str) -> sqlite3.Row | None:
         return self._conn.execute("SELECT * FROM chunks WHERE chunk_id = ?", (chunk_id,)).fetchone()
 
+    def get_chunk_at(self, path: str, line: int) -> sqlite3.Row | None:
+        row = self._conn.execute(
+            "SELECT * FROM chunks WHERE path = ? AND start_line <= ? AND end_line >= ? "
+            "ORDER BY (end_line - start_line) ASC LIMIT 1",
+            (path, line, line),
+        ).fetchone()
+        if row is not None:
+            return row
+        return self._conn.execute(
+            "SELECT * FROM chunks WHERE path = ? ORDER BY ABS(start_line - ?) ASC LIMIT 1",
+            (path, line),
+        ).fetchone()
+
+    def get_file_mtimes(self, paths: Sequence[str]) -> dict[str, float]:
+        paths = list(paths)
+        if not paths:
+            return {}
+        out: dict[str, float] = {}
+        CHUNK = 500
+        for start in range(0, len(paths), CHUNK):
+            slab = paths[start : start + CHUNK]
+            placeholders = ",".join("?" * len(slab))
+            rows = self._conn.execute(
+                f"SELECT path, last_modified FROM files WHERE path IN ({placeholders})",
+                tuple(slab),
+            ).fetchall()
+            for r in rows:
+                if r["last_modified"] is not None:
+                    out[r["path"]] = float(r["last_modified"])
+        return out
+
     def get_chunks(self, chunk_ids: Sequence[str]) -> list[sqlite3.Row]:
         if not chunk_ids:
             return []

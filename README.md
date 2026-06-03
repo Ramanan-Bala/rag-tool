@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ramanan-bala/repo-rag/main/docs/assets/logo.svg" alt="repo-rag" width="420">
+</p>
+
 # repo-rag
 
 [![PyPI version](https://img.shields.io/pypi/v/repo-rag.svg)](https://pypi.org/project/repo-rag/)
@@ -32,10 +36,10 @@ rag hooks install           # keep the index fresh on every commit / merge / che
 That's it. Open Claude Code, Cursor, or any other supported agent and ask
 "where is auth configured" - the agent will call `repo_rag_search` first.
 
-> `repo-rag` pulls in lancedb, pyarrow, fastembed, and onnxruntime, so
-> expect roughly **500 MB on disk** for the dependency stack regardless of
-> install method. `pipx` keeps that footprint in one isolated environment
-> instead of every project venv.
+> `repo-rag` pulls in lancedb, pyarrow, model2vec, fastembed, tree-sitter,
+> and onnxruntime, so expect roughly **500 MB on disk** for the dependency
+> stack regardless of install method. `pipx` keeps that footprint in one
+> isolated environment instead of every project venv.
 
 ## What you get
 
@@ -43,8 +47,12 @@ That's it. Open Claude Code, Cursor, or any other supported agent and ask
   shared across every MCP client. No per-tool re-embedding.
 - **Hybrid retrieval.** SQLite FTS5 BM25 keyword search plus LanceDB vector
   search, merged with configurable weights.
-- **Local by default.** The `fastembed` backend runs CPU-only ONNX inference
-  with a 384-dim model; no network calls and no API keys.
+- **AST-aware chunking by default.** Code is split with tree-sitter definition
+  boundaries when the language parser succeeds, with regex chunking as the
+  fallback for unsupported files.
+- **Local by default.** The default `model2vec` backend runs code-specialized
+  static embeddings on CPU (with `fastembed` as a transformer fallback for
+  prose/docs); your code never leaves your machine and no API keys are needed.
 - **Memory across sessions.** `repo_rag_remember` lets agents persist
   architectural decisions, gotchas, and invariants that survive
   `rag rebuild`.
@@ -93,7 +101,8 @@ modes.
 
 ## Performance highlights
 
-- 3-10 chunks/sec on a typical laptop with the default `fastembed` model.
+- Very fast indexing with the default `model2vec` static model (no transformer
+  forward pass); ~3-10 chunks/sec with the `fastembed` transformer fallback.
 - Embedding cache keyed by `(provider, model, dim, sha256(content))` makes
   interrupted rebuilds resume cheaply and lets you switch providers without
   invalidating the unrelated rows.

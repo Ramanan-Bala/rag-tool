@@ -70,14 +70,16 @@ re-register repos.
    `config.toml` (or per-repo overrides) using `pathspec`.
 2. **Filter** unchanged files (when `--changed` is set) by comparing
    `(path, mtime, sha256)` against the SQLite metadata.
-3. **Chunk** each file. Code files use a ~500-token target with regex-driven
-   function/class boundary preference; prose targets ~1500 tokens. Chunks
-   carry `(path, start_line, end_line, language, content)`.
+3. **Chunk** each file. Code files use a ~500-token target with tree-sitter
+   definition boundaries by default, falling back to regex-driven
+   function/class boundaries when a parser is unavailable; prose targets ~1500
+   tokens. Chunks carry `(path, start_line, end_line, language, content)`.
 4. **Cache lookup**. Each chunk's embedding key is
    `(provider, model, dim, sha256(content))`. Hits bypass embedding.
 5. **Embed** the misses in batches of `embedding.batch_size`. The default
-   provider is fastembed (CPU ONNX); `sentence-transformers`, Ollama, and
-   OpenAI-compatible HTTP backends ship as optional extras.
+   provider is model2vec (code-specialized static embeddings, CPU); `fastembed`
+   (CPU ONNX transformer) is the bundled fallback, and `sentence-transformers`,
+   Ollama, and OpenAI-compatible HTTP backends ship as optional extras.
 6. **Write** to SQLite (FTS5 index + chunk rows) and LanceDB (vector table)
    inside a single window. A window is `--window-size` files (default 16).
 7. **Repeat** until done; periodically emit progress events the CLI renders

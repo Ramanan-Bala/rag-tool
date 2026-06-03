@@ -9,6 +9,10 @@ def make_embedder(cfg: EmbeddingConfig) -> EmbeddingProvider:
         from .local import FastEmbedProvider
 
         return FastEmbedProvider(model=cfg.model, dim=cfg.dim)
+    if cfg.provider == "model2vec":
+        from .local import Model2VecProvider
+
+        return Model2VecProvider(model=cfg.model, dim=cfg.dim)
     if cfg.provider == "sentence_transformers":
         from .local import SentenceTransformersProvider
 

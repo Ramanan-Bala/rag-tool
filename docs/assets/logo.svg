@@ -1,0 +1,42 @@
+<svg width="760" height="220" viewBox="0 0 760 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="repo-rag">
+  <defs>
+    <linearGradient id="tile" x1="24" y1="26" x2="192" y2="194" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4F46E5"/>
+      <stop offset="0.55" stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#9333EA"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="50" y1="40" x2="150" y2="170" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="470" y1="80" x2="690" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6D28D9"/>
+      <stop offset="1" stop-color="#9333EA"/>
+    </linearGradient>
+  </defs>
+
+  <!-- icon -->
+  <g transform="translate(24,26) scale(0.656)">
+    <rect x="8" y="8" width="240" height="240" rx="56" fill="url(#tile)"/>
+    <rect x="8" y="8" width="240" height="240" rx="56" fill="url(#sheen)"/>
+    <g stroke="#FFFFFF" stroke-width="4" stroke-opacity="0.6">
+      <line x1="84" y1="88" x2="126" y2="96"/>
+      <line x1="126" y1="96" x2="98" y2="126"/>
+      <line x1="84" y1="88" x2="98" y2="126"/>
+    </g>
+    <g fill="#FFFFFF">
+      <circle cx="84" cy="88" r="7"/>
+      <circle cx="126" cy="96" r="7"/>
+      <circle cx="98" cy="126" r="7"/>
+    </g>
+    <circle cx="104" cy="104" r="52" stroke="#FFFFFF" stroke-width="14" fill="none"/>
+    <line x1="144" y1="144" x2="198" y2="198" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round"/>
+    <line x1="144" y1="144" x2="198" y2="198" stroke="#C4B5FD" stroke-width="8" stroke-linecap="round" stroke-opacity="0.8"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="214" y="120" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="96" font-weight="800" letter-spacing="-2">
+    <tspan fill="#1E293B">repo</tspan><tspan fill="url(#accent)">-rag</tspan>
+  </text>
+  <text x="218" y="168" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="26" font-weight="500" letter-spacing="0.5" fill="#64748B">hybrid code search for AI agents</text>
+</svg>

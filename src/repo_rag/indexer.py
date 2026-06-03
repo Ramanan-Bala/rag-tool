@@ -282,6 +282,7 @@ class Indexer:
                     self.cfg.chunking.code_chunk_tokens,
                     self.cfg.chunking.prose_chunk_tokens,
                     self.cfg.chunking.overlap_tokens,
+                    self.cfg.chunking.use_tree_sitter,
                 )
                 size_bytes = len(text.encode("utf-8"))
                 self._emit(

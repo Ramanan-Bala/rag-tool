@@ -17,7 +17,7 @@ from .memory import forget as memory_forget
 from .memory import remember as memory_remember
 from .paths import find_repo_root, repo_index_dir
 from .registry import lookup
-from .search import hybrid_search
+from .search import find_related, hybrid_search
 from .store.lance import LanceStore
 from .store.sqlite import SqliteStore
 
@@ -49,7 +49,8 @@ def _open_repo(repo: str | None = None):
         "PRIMARY code search for the current repository. ALWAYS prefer this tool over "
         "Grep, ripgrep, or Glob for any question about code, symbols, files, or behavior "
         "in the indexed codebase. Returns ranked semantic + keyword matches with file "
-        "paths and line ranges."
+        "paths and line ranges. Use `content` to scope results: 'code' (default 'all'), "
+        "'docs' for prose/markdown, or 'config' for json/yaml/toml/etc."
     ),
     annotations=ToolAnnotations(
         title="Search Code (repo-rag)",
@@ -59,9 +60,11 @@ def _open_repo(repo: str | None = None):
         openWorldHint=False,
     ),
 )
-def repo_rag_search(query: str, top_k: int = 20, repo: str | None = None) -> str:
+def repo_rag_search(
+    query: str, top_k: int = 20, content: str = "all", repo: str | None = None
+) -> str:
     repo_root, _, cfg, sqlite, embedder, lance = _open_repo(repo)
-    hits = hybrid_search(query, embedder, lance, sqlite, cfg, top_k=top_k)
+    hits = hybrid_search(query, embedder, lance, sqlite, cfg, top_k=top_k, content=content)
     payload = [
         {
             "chunk_id": h.chunk_id,
@@ -80,6 +83,40 @@ def repo_rag_search(query: str, top_k: int = 20, repo: str | None = None) -> str
 
 @mcp.tool(
     description=(
+        "Find code semantically similar to a known location. Pass `file_path` and `line` "
+        "(e.g. from a prior repo_rag_search result) to discover related implementations, "
+        "call sites, or parallel patterns elsewhere in the repo."
+    ),
+    annotations=ToolAnnotations(
+        title="Find Related Code (repo-rag)",
+        readOnlyHint=True,
+        destructiveHint=False,
+        idempotentHint=True,
+        openWorldHint=False,
+    ),
+)
+def repo_rag_find_related(
+    file_path: str, line: int, top_k: int = 10, repo: str | None = None
+) -> str:
+    repo_root, _, cfg, sqlite, embedder, lance = _open_repo(repo)
+    hits = find_related(file_path, line, embedder, lance, sqlite, cfg, top_k=top_k)
+    payload = [
+        {
+            "chunk_id": h.chunk_id,
+            "path": h.path,
+            "score": round(h.score, 4),
+            "start_line": h.start_line,
+            "end_line": h.end_line,
+            "language": h.language,
+            "content": h.content,
+        }
+        for h in hits
+    ]
+    return json.dumps({"repo": str(repo_root), "anchor": f"{file_path}:{line}", "results": payload}, indent=2)
+
+
+@mcp.tool(
+    description=(
         "Build a curated markdown context pack for a given task. Call at the START of "
         "any non-trivial task to load relevant files, chunks, and remembered notes."
     ),
@@ -91,9 +128,11 @@ def repo_rag_search(query: str, top_k: int = 20, repo: str | None = None) -> str
         openWorldHint=False,
     ),
 )
-def repo_rag_get_context(task: str, max_tokens: int = 6000, repo: str | None = None) -> str:
+def repo_rag_get_context(
+    task: str, max_tokens: int = 6000, content: str = "all", repo: str | None = None
+) -> str:
     repo_root, _, cfg, sqlite, embedder, lance = _open_repo(repo)
-    hits = hybrid_search(task, embedder, lance, sqlite, cfg)
+    hits = hybrid_search(task, embedder, lance, sqlite, cfg, content=content)
     return build_context_pack(task, hits, sqlite, cfg, repo_root, max_tokens=max_tokens)
 
 
