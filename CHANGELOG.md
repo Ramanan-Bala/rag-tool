@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.6] - 2026-06-03
+
+### Fixed
+
+- Report default `model2vec` model download/cache failures as a concise,
+  actionable CLI error instead of exposing the full Hugging Face traceback.
+
 ## [0.1.5] - 2026-06-01
 
 ### Added
@@ -77,9 +84,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Windowed batch indexer with `--window-size`, `--pace-sec`, `--sequential`, `--full-speed`, `--threads`, and `--changed` flags.
 - Six-section Code Search Policy installable into any agent's rules file via `rag agents setup`.
 
-[Unreleased]: https://github.com/ramanan-bala/repo-rag/compare/v0.1.5...HEAD
+[Unreleased]: https://github.com/ramanan-bala/repo-rag/compare/v0.1.6...HEAD
+[0.1.6]: https://github.com/ramanan-bala/repo-rag/compare/v0.1.5...v0.1.6
 [0.1.5]: https://github.com/ramanan-bala/repo-rag/compare/v0.1.4...v0.1.5
-[0.1.5]: https://github.com/ramanan-bala/repo-rag/compare/v0.1.3...v0.1.4
+[0.1.4]: https://github.com/ramanan-bala/repo-rag/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/ramanan-bala/repo-rag/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/ramanan-bala/repo-rag/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/ramanan-bala/repo-rag/compare/v0.1.0...v0.1.1

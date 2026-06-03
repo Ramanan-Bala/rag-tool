@@ -68,7 +68,15 @@ class Model2VecProvider(EmbeddingProvider):
                 source = snapshot_download(model, ignore_patterns=["*.py"])
             except Exception:
                 source = model
-        self._impl = StaticModel.from_pretrained(source)
+        try:
+            self._impl = StaticModel.from_pretrained(source)
+        except Exception as e:
+            raise RuntimeError(
+                "Unable to load model2vec embedding model "
+                f"{model!r}. Connect to Hugging Face once so the model can be cached, "
+                "or set RAG_EMBEDDING_PROVIDER/RAG_EMBEDDING_MODEL to an available "
+                "local or remote embedding provider."
+            ) from e
         self.model = model
         self.dim = int(getattr(self._impl, "dim", dim) or dim)
 

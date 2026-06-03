@@ -93,6 +93,11 @@ def _load_effective_config(repo_id: str):
     return load_repo_config(repo_id)
 
 
+def _abort_runtime_error(exc: RuntimeError) -> None:
+    console.print(f"[red]Error:[/red] {exc}")
+    raise typer.Exit(code=1) from exc
+
+
 def _fmt_eta(seconds: float | None) -> str:
     if seconds is None or seconds < 0 or seconds != seconds:
         return "--:--"
@@ -454,21 +459,24 @@ def index(
     else:
         effective_window = None
     idx = Indexer(repo_root, repo_id, cfg, window_size=effective_window, pace_sec=pace_sec)
-    if sequential:
-        console.print(
-            f"[yellow]--sequential[/yellow]: window_size={idx.window_size}, pace_sec={pace_sec}"
-        )
-        stats = _run_with_sequential_log(
-            lambda cb: idx.index_all(changed_only=changed, on_progress=cb),
-            label="Indexing",
-        )
-    elif quiet:
-        stats = idx.index_all(changed_only=changed)
-    else:
-        stats = _run_with_progress(
-            lambda cb: idx.index_all(changed_only=changed, on_progress=cb),
-            label="Indexing",
-        )
+    try:
+        if sequential:
+            console.print(
+                f"[yellow]--sequential[/yellow]: window_size={idx.window_size}, pace_sec={pace_sec}"
+            )
+            stats = _run_with_sequential_log(
+                lambda cb: idx.index_all(changed_only=changed, on_progress=cb),
+                label="Indexing",
+            )
+        elif quiet:
+            stats = idx.index_all(changed_only=changed)
+        else:
+            stats = _run_with_progress(
+                lambda cb: idx.index_all(changed_only=changed, on_progress=cb),
+                label="Indexing",
+            )
+    except RuntimeError as e:
+        _abort_runtime_error(e)
     console.print(
         f"[green]Indexed[/green] files={stats.files_indexed} "
         f"skipped={stats.files_skipped} removed={stats.files_removed} "
@@ -541,21 +549,28 @@ def rebuild(
     else:
         effective_window = None
     idx = Indexer(repo_root, repo_id, cfg, window_size=effective_window, pace_sec=pace_sec)
-    if sequential:
-        console.print(
-            f"[yellow]--sequential[/yellow]: window_size={idx.window_size}, pace_sec={pace_sec}"
-        )
-        stats = _run_with_sequential_log(
-            lambda cb: idx.rebuild(wipe_memory=wipe_memory, wipe_cache=wipe_cache, on_progress=cb),
-            label="Rebuilding",
-        )
-    elif quiet:
-        stats = idx.rebuild(wipe_memory=wipe_memory, wipe_cache=wipe_cache)
-    else:
-        stats = _run_with_progress(
-            lambda cb: idx.rebuild(wipe_memory=wipe_memory, wipe_cache=wipe_cache, on_progress=cb),
-            label="Rebuilding",
-        )
+    try:
+        if sequential:
+            console.print(
+                f"[yellow]--sequential[/yellow]: window_size={idx.window_size}, pace_sec={pace_sec}"
+            )
+            stats = _run_with_sequential_log(
+                lambda cb: idx.rebuild(
+                    wipe_memory=wipe_memory, wipe_cache=wipe_cache, on_progress=cb
+                ),
+                label="Rebuilding",
+            )
+        elif quiet:
+            stats = idx.rebuild(wipe_memory=wipe_memory, wipe_cache=wipe_cache)
+        else:
+            stats = _run_with_progress(
+                lambda cb: idx.rebuild(
+                    wipe_memory=wipe_memory, wipe_cache=wipe_cache, on_progress=cb
+                ),
+                label="Rebuilding",
+            )
+    except RuntimeError as e:
+        _abort_runtime_error(e)
     console.print(
         f"[green]Rebuilt[/green] files={stats.files_indexed} "
         f"chunks={stats.chunks_added} embedded={stats.chunks_embedded} "

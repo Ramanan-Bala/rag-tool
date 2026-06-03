@@ -80,3 +80,29 @@ def test_config_show_path_uses_repo_config(fake_repo: Path, isolated_index_root:
     assert result.exit_code == 0
     payload = json.loads(result.stdout)
     assert payload["exclude_globs"] == ["README.md"]
+
+
+def test_rebuild_reports_runtime_errors_without_traceback(
+    fake_repo: Path, isolated_index_root: Path, monkeypatch
+):
+    register_repo(fake_repo)
+
+    class BrokenIndexer:
+        def __init__(self, *_args, **_kwargs):
+            pass
+
+        def rebuild(self, *_args, **_kwargs):
+            raise RuntimeError("Unable to load model2vec embedding model 'missing/model'.")
+
+    monkeypatch.setattr("repo_rag.cli.Indexer", BrokenIndexer)
+
+    result = runner.invoke(
+        app,
+        ["rebuild", str(fake_repo), "--quiet"],
+        env={},
+        catch_exceptions=False,
+    )
+
+    assert result.exit_code == 1
+    assert "Unable to load model2vec embedding model" in result.stdout
+    assert "Traceback" not in result.stdout
