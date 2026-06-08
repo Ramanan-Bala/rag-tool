@@ -9,8 +9,7 @@ from pathlib import Path
 import pytest
 
 from repo_rag.agents.antigravity import AntigravityAgent
-from repo_rag.agents.claude_code import ClaudeCodeAgent
-from repo_rag.agents.claude_desktop import ClaudeDesktopAgent
+from repo_rag.agents.claude import ClaudeAgent
 from repo_rag.agents.codex import CodexAgent
 from repo_rag.agents.continue_ import ContinueAgent
 from repo_rag.agents.cursor import CursorAgent
@@ -57,18 +56,35 @@ def test_factory_mcp_preserves_sibling_entries(fake_home: Path):
     assert "repo-rag" in data["mcpServers"]
 
 
-def test_claude_code_mcp_writes_to_dotjson(fake_home: Path):
-    result = ClaudeCodeAgent().install_mcp(scope="user")
+def test_claude_mcp_writes_to_dotjson(fake_home: Path):
+    agent = ClaudeAgent()
+    result = agent.install_mcp(scope="user")
     assert result is not None
     assert result.path == fake_home / ".claude.json"
     assert "repo-rag" in _load_json(result.path)["mcpServers"]
 
 
-def test_claude_desktop_mcp_path_per_platform(fake_home: Path):
-    result = ClaudeDesktopAgent().install_mcp(scope="user")
-    assert result is not None
-    assert result.path.name == "claude_desktop_config.json"
-    assert "repo-rag" in _load_json(result.path)["mcpServers"]
+def test_claude_mcp_also_writes_desktop_config(fake_home: Path):
+    """ClaudeAgent.install_mcp must write the desktop config as a side effect."""
+    agent = ClaudeAgent()
+    # Create the desktop config parent dir so the side-effect write fires.
+    desktop_dir = fake_home / "Library" / "Application Support" / "Claude"
+    desktop_dir.mkdir(parents=True)
+    agent.install_mcp(scope="user")
+    desktop_config = desktop_dir / "claude_desktop_config.json"
+    assert desktop_config.exists()
+    assert "repo-rag" in _load_json(desktop_config)["mcpServers"]
+
+
+def test_claude_detects_either_cli_or_desktop(fake_home: Path):
+    agent = ClaudeAgent()
+    # Neither present initially (fake home is empty except for std dirs).
+    # detect() checks .claude/, .claude.json, and the desktop config path.
+    assert agent.detect() is False
+
+    # Create CLI config dir.
+    (fake_home / ".claude").mkdir()
+    assert agent.detect() is True
 
 
 def test_codex_writes_valid_toml(fake_home: Path):

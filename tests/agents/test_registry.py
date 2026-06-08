@@ -8,8 +8,7 @@ from repo_rag.agents.base import AgentPlugin
 EXPECTED_NAMES = {
     "universal",
     "factory",
-    "claude_code",
-    "claude_desktop",
+    "claude",
     "codex",
     "cursor",
     "windsurf",
@@ -28,15 +27,25 @@ def test_iter_plugins_yields_every_target():
     assert names == EXPECTED_NAMES
 
 
-def test_resolve_target_returns_matching_plugin():
-    plugin = resolve_target("claude_code")
+def test_resolve_target_returns_claude_plugin():
+    plugin = resolve_target("claude")
     assert isinstance(plugin, AgentPlugin)
-    assert plugin.name == "claude_code"
+    assert plugin.name == "claude"
+
+
+def test_claude_code_alias_resolves_to_claude():
+    plugin = resolve_target("claude_code")
+    assert plugin.name == "claude"
+
+
+def test_claude_desktop_alias_resolves_to_claude():
+    plugin = resolve_target("claude_desktop")
+    assert plugin.name == "claude"
 
 
 def test_resolve_target_accepts_dashes():
     plugin = resolve_target("claude-code")
-    assert plugin.name == "claude_code"
+    assert plugin.name == "claude"
 
 
 def test_resolve_target_unknown_raises():

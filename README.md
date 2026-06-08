@@ -66,8 +66,7 @@ That's it. Open Claude Code, Cursor, or any other supported agent and ask
 | Agent | Rules | MCP auto-write | Docs |
 |---|---|---|---|
 | Factory Droid | `~/.factory/AGENTS.md`, `<repo>/AGENTS.md` | yes | [`docs/clients/factory.md`](docs/clients/factory.md) |
-| Claude Code | `~/.claude/CLAUDE.md`, `<repo>/CLAUDE.md` | yes | [`docs/clients/claude_code.md`](docs/clients/claude_code.md) |
-| Claude Desktop | (none) | yes (per-OS path) | [`docs/clients/claude_desktop.md`](docs/clients/claude_desktop.md) |
+| Claude (CLI + Desktop) | `~/.claude/CLAUDE.md`, `<repo>/CLAUDE.md` | yes (CLI + Desktop) | [`docs/clients/claude.md`](docs/clients/claude.md) |
 | Codex CLI/Desktop | `~/.codex/AGENTS.md`, `<repo>/AGENTS.md` | yes (TOML) | [`docs/clients/codex.md`](docs/clients/codex.md) |
 | Cursor | `~/.cursor/rules/repo-rag.mdc`, `<repo>/.cursor/rules/repo-rag.mdc` | yes | [`docs/clients/cursor.md`](docs/clients/cursor.md) |
 | Windsurf | `~/.codeium/windsurf/global_rules.md`, `<repo>/.windsurfrules` | yes | [`docs/clients/windsurf.md`](docs/clients/windsurf.md) |

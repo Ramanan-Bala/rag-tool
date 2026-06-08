@@ -38,9 +38,18 @@ def test_remove_md_block_noop_when_missing():
     assert out == "nothing\n"
 
 
-def test_rules_markdown_does_not_use_strict_language():
+def test_rules_markdown_has_enforcement_language():
+    """The rules block MUST use precise enforcement language for all agents."""
     body = rt.rules_markdown().lower()
-    assert "mandatory" not in body
-    assert "prohibited" not in body
-    assert "enforcement" not in body
-    assert "non-negotiable" not in body
+    # Core enforcement — all agents must follow these rules.
+    assert "all agents" in body
+    assert "must" in body
+    assert "without exception" in body
+    # Section 0 — index initiation check.
+    assert "index initiation" in body
+    assert "not indexed" in body
+    # Section 7 — MCP server configuration.
+    assert "mcp server" in body
+    assert "rag agents setup" in body
+    # Exception tracking.
+    assert "reasonable exceptions" in body

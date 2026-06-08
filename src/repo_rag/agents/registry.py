@@ -7,8 +7,7 @@ from collections.abc import Iterable
 from .aider import AiderAgent
 from .antigravity import AntigravityAgent
 from .base import AgentPlugin
-from .claude_code import ClaudeCodeAgent
-from .claude_desktop import ClaudeDesktopAgent
+from .claude import ClaudeAgent
 from .cline import ClineAgent
 from .codex import CodexAgent
 from .continue_ import ContinueAgent
@@ -25,8 +24,7 @@ def _all_plugin_classes() -> list[type[AgentPlugin]]:
     return [
         UniversalAgent,
         FactoryAgent,
-        ClaudeCodeAgent,
-        ClaudeDesktopAgent,
+        ClaudeAgent,
         CodexAgent,
         CursorAgent,
         WindsurfAgent,
@@ -40,17 +38,30 @@ def _all_plugin_classes() -> list[type[AgentPlugin]]:
     ]
 
 
+# Backward-compat aliases so old names still resolve.
+_ALIASES: dict[str, str] = {
+    "claude_code": "claude",
+    "claude_desktop": "claude",
+}
+
+
 def iter_plugins() -> Iterable[AgentPlugin]:
     """Yield one fresh instance of every registered plugin."""
+    seen: set[str] = set()
     for cls in _all_plugin_classes():
-        yield cls()
+        plugin = cls()
+        if plugin.name not in seen:
+            seen.add(plugin.name)
+            yield plugin
 
 
 def resolve_target(name: str) -> AgentPlugin:
     """Return the plugin whose ``name`` matches ``name`` (case-insensitive)."""
     key = name.strip().lower().replace("-", "_")
+    # Check aliases first for backward compat.
+    resolved = _ALIASES.get(key, key)
     for plugin in iter_plugins():
-        if plugin.name == key:
+        if plugin.name == resolved:
             return plugin
     known = ", ".join(sorted(p.name for p in iter_plugins()))
     raise KeyError(f"Unknown agent target {name!r}. Known: {known}.")
