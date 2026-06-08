@@ -61,9 +61,7 @@ def _open_repo(repo: str):
         openWorldHint=False,
     ),
 )
-def repo_rag_search(
-    repo: str, query: str, top_k: int = 20, content: str = "all"
-) -> str:
+def repo_rag_search(repo: str, query: str, top_k: int = 20, content: str = "all") -> str:
     repo_root, _, cfg, sqlite, embedder, lance = _open_repo(repo)
     hits = hybrid_search(query, embedder, lance, sqlite, cfg, top_k=top_k, content=content)
     payload = [
@@ -96,9 +94,7 @@ def repo_rag_search(
         openWorldHint=False,
     ),
 )
-def repo_rag_find_related(
-    repo: str, file_path: str, line: int, top_k: int = 10
-) -> str:
+def repo_rag_find_related(repo: str, file_path: str, line: int, top_k: int = 10) -> str:
     repo_root, _, cfg, sqlite, embedder, lance = _open_repo(repo)
     hits = find_related(file_path, line, embedder, lance, sqlite, cfg, top_k=top_k)
     payload = [
@@ -131,9 +127,7 @@ def repo_rag_find_related(
         openWorldHint=False,
     ),
 )
-def repo_rag_get_context(
-    repo: str, task: str, max_tokens: int = 6000, content: str = "all"
-) -> str:
+def repo_rag_get_context(repo: str, task: str, max_tokens: int = 6000, content: str = "all") -> str:
     repo_root, _, cfg, sqlite, embedder, lance = _open_repo(repo)
     hits = hybrid_search(task, embedder, lance, sqlite, cfg, content=content)
     return build_context_pack(task, hits, sqlite, cfg, repo_root, max_tokens=max_tokens)
