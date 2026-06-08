@@ -51,6 +51,10 @@ MCP tools before any other search or file-read tool:
   - `repo_rag_get_context`      - at the start of multi-step tasks
   - `repo_rag_status`           - to confirm the repo is indexed
 
+Always pass `repo` with the absolute path to the repository root on every
+repo-rag tool call (all tools except `repo_rag_status` require it). The
+working directory is available from the session context.
+
 Treat the chunks returned by repo-rag as the primary evidence and cite
 `path:start_line-end_line` when describing code you found via repo-rag.
 
@@ -110,9 +114,10 @@ in an indexed repo without a section 3 justification, cancel the call and
 switch to `repo_rag_search` instead.
 
 These rules apply to **all agents without exception**. When spawning a
-subagent, its prompt MUST include a reminder to use `repo_rag_search` for
-code search. Workflow scripts MUST include `repo_rag_search` instructions
-in agent prompts.
+subagent, its prompt MUST include reminders to use `repo_rag_search` for
+code search AND to pass `repo` (the project root path) on every call.
+Workflow scripts MUST include `repo_rag_search` instructions in agent
+prompts.
 
 ### 7. MCP server configuration
 
