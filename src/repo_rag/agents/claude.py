@@ -84,8 +84,5 @@ class ClaudeAgent(AgentPlugin):
             command="claude mcp add repo-rag rag mcp-server",
             config_path=self._settings_path(),
             config_snippet=mcp_servers_json_snippet(),
-            notes=[
-                "Also writes to %s for Claude Desktop."
-                % _desktop_config_path(),
-            ],
+            notes=[f"Also writes to {_desktop_config_path()} for Claude Desktop."],
         )
