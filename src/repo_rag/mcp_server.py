@@ -5,6 +5,7 @@ from ._runtime import apply_runtime_tuning
 apply_runtime_tuning(low_priority=False)
 
 import json
+import os
 from pathlib import Path
 
 from mcp.server.fastmcp import FastMCP
@@ -29,8 +30,8 @@ from .store.sqlite import SqliteStore
 mcp = FastMCP("repo-rag")
 
 
-def _open_repo(repo: str | None = None):
-    repo_root = Path(repo).resolve() if repo else find_repo_root()
+def _open_repo(repo: str):
+    repo_root = Path(repo).resolve()
     repo_id = lookup(repo_root)
     if not repo_id:
         raise RuntimeError(
@@ -61,7 +62,7 @@ def _open_repo(repo: str | None = None):
     ),
 )
 def repo_rag_search(
-    query: str, top_k: int = 20, content: str = "all", repo: str | None = None
+    repo: str, query: str, top_k: int = 20, content: str = "all"
 ) -> str:
     repo_root, _, cfg, sqlite, embedder, lance = _open_repo(repo)
     hits = hybrid_search(query, embedder, lance, sqlite, cfg, top_k=top_k, content=content)
@@ -96,7 +97,7 @@ def repo_rag_search(
     ),
 )
 def repo_rag_find_related(
-    file_path: str, line: int, top_k: int = 10, repo: str | None = None
+    repo: str, file_path: str, line: int, top_k: int = 10
 ) -> str:
     repo_root, _, cfg, sqlite, embedder, lance = _open_repo(repo)
     hits = find_related(file_path, line, embedder, lance, sqlite, cfg, top_k=top_k)
@@ -131,7 +132,7 @@ def repo_rag_find_related(
     ),
 )
 def repo_rag_get_context(
-    task: str, max_tokens: int = 6000, content: str = "all", repo: str | None = None
+    repo: str, task: str, max_tokens: int = 6000, content: str = "all"
 ) -> str:
     repo_root, _, cfg, sqlite, embedder, lance = _open_repo(repo)
     hits = hybrid_search(task, embedder, lance, sqlite, cfg, content=content)
@@ -151,7 +152,7 @@ def repo_rag_get_context(
         openWorldHint=False,
     ),
 )
-def repo_rag_remember(note: str, source: str | None = None, repo: str | None = None) -> str:
+def repo_rag_remember(repo: str, note: str, source: str | None = None) -> str:
     _, _, _, sqlite, _, _ = _open_repo(repo)
     note_id = memory_remember(sqlite, note, source)
     return json.dumps({"id": note_id, "ok": True})
@@ -167,7 +168,7 @@ def repo_rag_remember(note: str, source: str | None = None, repo: str | None = N
         openWorldHint=False,
     ),
 )
-def repo_rag_forget(id: int, repo: str | None = None) -> str:
+def repo_rag_forget(repo: str, id: int) -> str:
     _, _, _, sqlite, _, _ = _open_repo(repo)
     ok = memory_forget(sqlite, int(id))
     return json.dumps({"id": id, "removed": ok})
@@ -214,5 +215,12 @@ def repo_rag_status(repo: str | None = None) -> str:
     return json.dumps(status, indent=2)
 
 
-def run() -> None:
+def run(*, repo: str | None = None) -> None:
+    """Start the MCP server over stdio.
+
+    *repo* is the path to the repository; when omitted the server falls
+    back to ``$REPO_RAG_REPO``, then walks up from cwd looking for ``.git``.
+    """
+    if repo:
+        os.environ["REPO_RAG_REPO"] = str(Path(repo).resolve())
     mcp.run()
