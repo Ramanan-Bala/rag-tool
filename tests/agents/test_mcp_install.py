@@ -9,7 +9,7 @@ from pathlib import Path
 import pytest
 
 from repo_rag.agents.antigravity import AntigravityAgent
-from repo_rag.agents.claude import ClaudeAgent
+from repo_rag.agents.claude import ClaudeAgent, _desktop_config_path
 from repo_rag.agents.codex import CodexAgent
 from repo_rag.agents.continue_ import ContinueAgent
 from repo_rag.agents.cursor import CursorAgent
@@ -68,10 +68,9 @@ def test_claude_mcp_also_writes_desktop_config(fake_home: Path):
     """ClaudeAgent.install_mcp must write the desktop config as a side effect."""
     agent = ClaudeAgent()
     # Create the desktop config parent dir so the side-effect write fires.
-    desktop_dir = fake_home / "Library" / "Application Support" / "Claude"
-    desktop_dir.mkdir(parents=True)
+    desktop_config = _desktop_config_path()
+    desktop_config.parent.mkdir(parents=True)
     agent.install_mcp(scope="user")
-    desktop_config = desktop_dir / "claude_desktop_config.json"
     assert desktop_config.exists()
     assert "repo-rag" in _load_json(desktop_config)["mcpServers"]
 
