@@ -76,7 +76,7 @@ class ClaudeAgent(AgentPlugin):
         # Side effect: also write the desktop config.
         desktop_path = _desktop_config_path()
         if desktop_path.parent.exists():
-            upsert_json_mcp_entry(desktop_path)
+            result.side_effects.append(upsert_json_mcp_entry(desktop_path))
         return result
 
     def mcp_hint(self, *, scope: Scope = "user", repo_root: Path | None = None) -> MCPHint:

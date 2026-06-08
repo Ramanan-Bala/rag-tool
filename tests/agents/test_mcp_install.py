@@ -70,7 +70,12 @@ def test_claude_mcp_also_writes_desktop_config(fake_home: Path):
     # Create the desktop config parent dir so the side-effect write fires.
     desktop_config = _desktop_config_path()
     desktop_config.parent.mkdir(parents=True)
-    agent.install_mcp(scope="user")
+    result = agent.install_mcp(scope="user")
+    assert result is not None
+    # The primary result is for ~/.claude.json; the desktop config is a side effect.
+    assert result.path == fake_home / ".claude.json"
+    assert len(result.side_effects) == 1
+    assert result.side_effects[0].path == desktop_config
     assert desktop_config.exists()
     assert "repo-rag" in _load_json(desktop_config)["mcpServers"]
 

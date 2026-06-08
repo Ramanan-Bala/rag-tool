@@ -21,6 +21,8 @@ class InstallResult:
     written: bool = False
     skipped_reason: str | None = None
     detail: str = ""
+    # Additional configs written as a side effect (e.g. Claude Desktop alongside CLI).
+    side_effects: list[InstallResult] = field(default_factory=list)
 
 
 @dataclass

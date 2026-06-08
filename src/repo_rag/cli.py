@@ -1077,6 +1077,13 @@ def _print_install_result(scope: str, kind: str, result) -> None:
         console.print(f"  [green]wrote {scope} {kind}[/green]: {result.path}")
     else:
         console.print(f"  [dim]{scope} {kind} unchanged[/dim]: {result.path}")
+    for side in result.side_effects:
+        if side.skipped_reason:
+            console.print(f"  [yellow]skipped {scope} {kind}[/yellow]: {side.skipped_reason}")
+        elif side.written:
+            console.print(f"  [green]wrote {scope} {kind}[/green]: {side.path}")
+        else:
+            console.print(f"  [dim]{scope} {kind} unchanged[/dim]: {side.path}")
 
 
 def _print_mcp_hint(display: str, hint) -> None:
