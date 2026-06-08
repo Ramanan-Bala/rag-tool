@@ -886,11 +886,15 @@ def deregister(path: str | None = typer.Option(None, "--path")):
 
 
 @app.command("mcp-server")
-def mcp_server():
+def mcp_server(
+    repo: str | None = typer.Option(
+        None, "--repo", help="Path to the repo. Falls back to $REPO_RAG_REPO, then cwd."
+    ),
+):
     """Run the MCP server over stdio (used by MCP-compatible AI agents)."""
     from .mcp_server import run
 
-    run()
+    run(repo=repo)
 
 
 @hooks_app.command("install")
