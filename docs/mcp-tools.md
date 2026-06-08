@@ -8,6 +8,13 @@ etc.) can run them without prompting.
 If you omit the `repo` argument the server infers the current repo from its
 working directory and looks it up in `~/.repo-rag/registry.json`.
 
+`repo` is a required parameter on all tools except `repo_rag_status`. The
+agent must pass the absolute path to the repository root (e.g.
+`/Users/you/project`). Claude Code and other agents know the project root
+from their session context. `repo_rag_status` accepts an optional `repo`
+and falls back to the ``$REPO_RAG_REPO`` environment variable or current
+working directory.
+
 ## `repo_rag_search`
 
 ```json
@@ -16,7 +23,7 @@ working directory and looks it up in `~/.repo-rag/registry.json`.
   "arguments": {
     "query": "where is auth configured",
     "top_k": 20,
-    "repo": null
+    "repo": "/abs/path/to/repo"
   }
 }
 ```
@@ -51,7 +58,7 @@ Use this as the primary code search instead of Grep / ripgrep / Glob.
   "arguments": {
     "task": "fix the auth timeout regression in #1234",
     "max_tokens": 6000,
-    "repo": null
+    "repo": "/abs/path/to/repo"
   }
 }
 ```
@@ -68,7 +75,7 @@ remembered notes that look relevant, then the top chunks formatted as
   "arguments": {
     "note": "Redis TTL is the source of truth for session expiry",
     "source": "incident-2143",
-    "repo": null
+    "repo": "/abs/path/to/repo"
   }
 }
 ```
@@ -83,7 +90,7 @@ Saves a durable note. Returns `{"id": 7, "ok": true}`. Notes survive
   "name": "repo_rag_forget",
   "arguments": {
     "id": 7,
-    "repo": null
+    "repo": "/abs/path/to/repo"
   }
 }
 ```
@@ -95,7 +102,7 @@ Removes a previously remembered note by id.
 ```json
 {
   "name": "repo_rag_status",
-  "arguments": {"repo": null}
+  "arguments": {"repo": "/abs/path/to/repo"}
 }
 ```
 
