@@ -19,6 +19,7 @@ EXPECTED_NAMES = {
     "aider",
     "minimax",
     "zed",
+    "opencode",
 }
 
 

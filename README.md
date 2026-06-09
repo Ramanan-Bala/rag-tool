@@ -77,6 +77,7 @@ That's it. Open Claude Code, Cursor, or any other supported agent and ask
 | Aider | `~/.aider/CONVENTIONS.md`, `<repo>/CONVENTIONS.md` | reference YAML | [`docs/clients/aider.md`](docs/clients/aider.md) |
 | MiniMax Agent | `<repo>/AGENTS.md` | yes | [`docs/clients/minimax.md`](docs/clients/minimax.md) |
 | Zed | `<zed-config>/.rules`, `<repo>/.rules` | yes (`context_servers`) | [`docs/clients/zed.md`](docs/clients/zed.md) |
+| OpenCode (CLI + Desktop) | `~/.config/opencode/CLAUDE.md`, `<repo>/CLAUDE.md` | yes | [`docs/clients/opencode.md`](docs/clients/opencode.md) |
 | Universal (AGENTS.md) | `~/.config/repo-rag/AGENTS.md`, `<repo>/AGENTS.md` | n/a | [`docs/clients/universal.md`](docs/clients/universal.md) |
 
 Run `rag agents list` for a live table of what is detected on your machine.

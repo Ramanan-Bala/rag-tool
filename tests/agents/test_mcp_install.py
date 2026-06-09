@@ -16,6 +16,7 @@ from repo_rag.agents.cursor import CursorAgent
 from repo_rag.agents.factory import FactoryAgent
 from repo_rag.agents.gemini import GeminiAgent
 from repo_rag.agents.minimax import MinimaxAgent
+from repo_rag.agents.opencode import OpenCodeAgent, _opencode_config_path
 from repo_rag.agents.windsurf import WindsurfAgent
 from repo_rag.agents.zed import ZedAgent
 
@@ -171,3 +172,42 @@ def test_zed_uses_context_servers_key(fake_home: Path):
     data = _load_json(result.path)
     assert "context_servers" in data
     assert "repo-rag" in data["context_servers"]
+
+
+def test_opencode_mcp_writes_to_opencode_json(fake_home: Path):
+    result = OpenCodeAgent().install_mcp(scope="user")
+    assert result is not None
+    expected_path = _opencode_config_path()
+    assert result.path == expected_path
+    data = _load_json(result.path)
+    assert "mcp" in data
+    assert data["mcp"]["repo-rag"] == {"type": "local", "command": ["rag", "mcp-server"]}
+
+
+def test_opencode_mcp_preserves_sibling_entries(fake_home: Path):
+    path = _opencode_config_path()
+    path.parent.mkdir(parents=True)
+    path.write_text(
+        json.dumps(
+            {
+                "mcp": {"other-server": {"type": "remote", "url": "https://example.com"}},
+                "model": "anthropic/claude-sonnet-4-5",
+            }
+        ),
+        encoding="utf-8",
+    )
+    OpenCodeAgent().install_mcp(scope="user")
+    data = _load_json(path)
+    assert "other-server" in data["mcp"]
+    assert data["mcp"]["other-server"]["type"] == "remote"
+    assert "repo-rag" in data["mcp"]
+    assert data["model"] == "anthropic/claude-sonnet-4-5"
+
+
+def test_opencode_detects_config_dir(fake_home: Path):
+    agent = OpenCodeAgent()
+    assert agent.detect() is False
+
+    # Create the config directory.
+    (fake_home / ".config" / "opencode").mkdir(parents=True)
+    assert agent.detect() is True

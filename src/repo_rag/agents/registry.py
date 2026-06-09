@@ -15,6 +15,7 @@ from .cursor import CursorAgent
 from .factory import FactoryAgent
 from .gemini import GeminiAgent
 from .minimax import MinimaxAgent
+from .opencode import OpenCodeAgent
 from .universal import UniversalAgent
 from .windsurf import WindsurfAgent
 from .zed import ZedAgent
@@ -34,6 +35,7 @@ def _all_plugin_classes() -> list[type[AgentPlugin]]:
         AntigravityAgent,
         AiderAgent,
         MinimaxAgent,
+        OpenCodeAgent,
         ZedAgent,
     ]
 
